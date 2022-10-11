@@ -1,11 +1,19 @@
 import React from 'react'
+import NavBarUser from '../components/NavBarUser';
+import Exhibicion from '../components/Exhibicion';
 
-const UserHome = () => {
+const Home = () => {
     return ( 
         <>
-            <h1>M.E.R.N. E-Commerce</h1>
+            <head>
+                <title>Home</title>
+            </head>
+            <body>
+                <NavBarUser/>
+                <Exhibicion/>
+            </body>
         </>
     );
 }
 
-export default UserHome;
+export default Home;

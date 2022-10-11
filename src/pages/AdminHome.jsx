@@ -1,11 +1,19 @@
 import React from 'react'
+import NavBarAdmin from '../components/NavBarAdmin';
+import Exhibicion from '../components/Exhibicion';
 
-const AdminHome = () => {
+const Home = () => {
     return ( 
         <>
-            <h1>M.E.R.N. E-Commerce</h1>
+            <head>
+                <title>Home</title>
+            </head>
+            <body>
+                <NavBarAdmin/>
+                <Exhibicion/>
+            </body>
         </>
     );
 }
 
-export default AdminHome;
+export default Home;
