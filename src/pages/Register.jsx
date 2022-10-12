@@ -1,9 +1,15 @@
 import React from 'react'
+import NavBar from '../components/NavBarGuest'
+import RegisterForm from '../components/Register';
 
 const Register = () => {
     return ( 
         <>
-            <h1>M.E.R.N. E-Commerce</h1>
+            <NavBar/>
+            <form>
+                <RegisterForm />
+                <button type="submit" className='bg-white rounded'>Registrar</button>
+            </form>
         </>
     );
 }

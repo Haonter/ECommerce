@@ -6,9 +6,9 @@ import BarraDeBusqueda from './BarraDeBusqueda'
 import MainLogo from '../media/mainLogo.png'
 
 const navegacion = [
-  { name: 'Inicio', href: 'https://google.com', current: true },
-  { name: 'Carrito', href: 'https://youtube.com', current: false },
-  { name: 'Ubicanos', href: 'https://gmail.com', current: false }
+  { name: 'Inicio', href: 'http://localhost:3000/Home', current: true },
+  { name: 'Carrito', href: 'http://localhost:3000/carrito', current: false },
+  { name: 'Ubicanos', href: 'http://Localhost:3000/about', current: false }
 ]
 {/*Funcion para trabajar operador ternario en botones*/}
 function classNames(...classes) {
@@ -23,10 +23,10 @@ function NavBar() {
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
 
             <div className="relative flex h-16 items-center justify-between">
+
               {/*Menú Hamburquesa*/}
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-zinc-800 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-                
+                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-zinc-800 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-1 focus:ring-inset focus:ring-white">
                 {/*Iconos y acciones*/}
                   {open ? (
                     <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
@@ -37,18 +37,10 @@ function NavBar() {
               </div>
 
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                {/*Logotipo de Marca - NavBar*/}
-                <div className="flex flex-shrink-0 items-center">
-                  <img
-                    className="block h-10 w-auto lg:hidden"
-                    src={MainLogo}
-                    alt="TechLabs"
-                  />
-                  <img
-                    className="hidden h-10 w-auto lg:block"
-                    src={MainLogo}
-                    alt="TechLabs"
-                  />
+                {/*Logotipo de Tienda - NavBar*/}
+                <div className="flex flex-shrink-0 items-center hidden sm:flex md:flex lg:flex">
+                  <img className="block h-10 w-auto lg:hidden" src={MainLogo} alt="TechLabs"/>
+                  <img className="hidden h-10 w-auto lg:block" src={MainLogo} alt="TechLabs"/>
                 </div>
 
                 {/*Anclas de navegacion*/}
@@ -98,7 +90,7 @@ function NavBar() {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="http://diegoarc.tech"
+                            href="http://localhost:3000/Home"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Productos
@@ -108,7 +100,7 @@ function NavBar() {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="http://localhost:3000/MiCarrito"
+                            href="http://localhost:3000/Carrito"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Carrito
@@ -118,7 +110,7 @@ function NavBar() {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="localhost:3000"
+                            href="http://localhost:3000"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Cerrar Sesion
@@ -134,6 +126,7 @@ function NavBar() {
             
           </div>
 
+          {/*Menú hamburguesa desplegado*/}
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pt-2 pb-3">
               {navegacion.map((item) => (
@@ -141,10 +134,14 @@ function NavBar() {
                   key={item.name}
                   as="a"
                   href={item.href}
-                  className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block px-3 py-2 rounded-md text-base font-medium'
-                  )}
+                  className={
+                    classNames(
+                        item.current 
+                        ? 'bg-zinc-900 text-white' 
+                        : 'text-zinc-900 hover:bg-zinc-700 hover:text-zinc-100',
+                        'block px-3 py-2 rounded-md text-base font-medium'
+                      )
+                    }
                   aria-current={item.current ? 'page' : undefined}
                 >
                   {item.name}

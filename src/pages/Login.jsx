@@ -1,9 +1,11 @@
 import React from 'react'
+import NavBar from '../components/NavBarGuest'
 
 const Login = () => {
     return ( 
         <>
-            <h1>M.E.R.N. E-Commerce</h1>
+            <NavBar/>
+            <h1>This is the Login Page</h1>
         </>
     );
 }

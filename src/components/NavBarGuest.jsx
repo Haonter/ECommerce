@@ -6,9 +6,10 @@ import BarraDeBusqueda from './BarraDeBusqueda'
 import MainLogo from '../media/mainLogo.png'
 
 const navegacion = [
-  { name: 'Inicio', href: 'https://google.com', current: true },
-  { name: 'Carrito', href: 'https://youtube.com', current: false },
-  { name: 'Ubicanos', href: 'https://gmail.com', current: false }
+  { name: 'Inicio', href: 'http://localhost:3000', current: true },
+  { name: 'Registrate', href: 'http://localhost:3000/register', current: false },
+  { name: 'Login', href: 'http://localhost:3000/login', current: false },
+  { name: 'Ubicanos', href: 'http://localhost:3000/about', current: false }
 ]
 {/*Funcion para trabajar operador ternario en botones*/}
 function classNames(...classes) {
@@ -61,48 +62,8 @@ function NavBar() {
                 </div>
               </div>
               
-              <BarraDeBusqueda/>
+              {/* ------------ Se Elimina Barra de Busqueda ------------ */}
 
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                {/* Desplieque de perfil */}
-                <Menu as="div" className="relative ml-3">
-                  <div>
-                    {/* Logo - Abrir Menú de usuario */}
-                    <Menu.Button className="flex rounded-full h-8 w-8 bg-gray-800 text-sm focus:outline-none focus:ring-1 focus:ring-white focus:ring-offset-1 focus:ring-offset-gray-800">
-                      <img src={logo} className="rounded-full" alt="Profile - GIF"/>
-                    </Menu.Button>
-                  </div>
-                  <Transition as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                  >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a href="http://diegoarc.tech"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}> Productos </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a href="http://localhost:3000/MiCarrito"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}> Carrito </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a href="localhost:3000"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}> Cerrar Sesion </a>
-                        )}
-                      </Menu.Item>
-                    </Menu.Items>
-                  </Transition>
-                </Menu>
-              </div>
             </div>
           </div>
           
@@ -113,8 +74,10 @@ function NavBar() {
                 <Disclosure.Button key={item.name} as="a" href={item.href} 
                 className={
                   classNames(
-                    item.current ? 'bg-zinc-900 text-white' : 'text-zinc-900 hover:bg-zinc-700 hover:text-zinc-100',
-                    'block px-3 py-2 rounded-md text-base font-medium'
+                      item.current 
+                      ? 'bg-zinc-900 text-white' 
+                      : 'text-zinc-900 hover:bg-zinc-700 hover:text-zinc-100',
+                      'block px-3 py-2 rounded-md text-base font-medium'
                     )
                   }
                   aria-current={item.current ? 'page' : undefined}>{item.name}

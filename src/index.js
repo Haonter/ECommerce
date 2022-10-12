@@ -13,6 +13,7 @@ import DeleteProduct from './pages/DeleteProduct';
 import Carrito from './pages/Carrito';
 import Verify from './pages/Recovery';
 import Recovery from './pages/Recovery2';
+import About from './pages/About'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -30,6 +31,7 @@ root.render(
       <Route path="/carrito" element={<Carrito/>} />
       <Route path="/verify" element={<Verify />} />
       <Route path="/recovery" element={<Recovery />} />
+      <Route path="/about" element={<About />} />
   </Routes>
 </BrowserRouter>
 );
