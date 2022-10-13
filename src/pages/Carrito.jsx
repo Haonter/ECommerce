@@ -1,11 +1,12 @@
 import React from 'react'
 import NavBarUserCarrito from '../components/NavBar/NavBarUserCarrito'
+import Products from '../components/Products';
 
 const Carrito = () => {
     return ( 
         <>
-        <NavBarUserCarrito/>
-            <h1>This is the Shooping Cart Page</h1>
+            <NavBarUserCarrito/>
+            <Products/>
         </>
     );
 }

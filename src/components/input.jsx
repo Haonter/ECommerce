@@ -1,23 +1,19 @@
 function Input(props) {
     return (
-    <>
-        <div className="">
-            
-            <label 
-                for={props.title}
-                className="block pl-2 text-sm font-medium text-gray-700 ">
-                {props.title}
-            </label>
+        <>
+            <div class="">
+                <label for={props.title} 
+                    class="block pl-2 text-sm font-medium text-gray-700 ">{props.title}</label>
 
-            <input 
-                type={props.type} 
-                name={props.title} 
-                id={props.id} 
-                className="m-1 py-3 pl-2 block w-full rounded-md shadow focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm placeholder:pl-2"
-            />
-        </div>
-    </>
+                <input type={props.type} 
+                    name={props.title} 
+                    id={props.id} 
+                    class={"m-1 py-" + props.paddingy + " pl-1 " + props.fontSize + " block w-" + props.width + " rounded-md shadow shadow-gray-400 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm placeholder:pl-2"} 
+                    placeholder={props.placeholder}/>
+            </div>
+        </>
     )
 }
 
 export default Input;
+

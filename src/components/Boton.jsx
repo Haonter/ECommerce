@@ -1,12 +1,12 @@
-function Boton() {
+function Boton(props) {
     return (
-        <div className="mt-5 sm:mt-8 sm:flex sm:justify-end lg:justify-end">
-            <div className="rounded-md shadow">
+        <div className={"mt-5 sm:mt-" + props.marginTop +" sm:flex-col sm:justify-" + props.justify + " lg:justify-end"}>
+            <div className="rounded-full shadow shadow-gray-400">
                 <a
                     href="#"
-                    className="flex w-full items-center justify-center rounded-full border border-transparent bg-green-400 py-1 px-5 text-sm font-medium text-white hover:bg-gray-400 md:py-1 md:px-5 md:text-sm"
+                    className={"flex w-" + props.width + " items-center justify-center rounded-full border border-transparent bg-" + props.color + "-400 py-1 px-5 text-sm font-medium text-" + props.textColor + " hover:bg-gray-400 md:py-1 md:px-4 md:text-sm"}
                 >
-                    Agregar al carrito
+                    {props.title}
                 </a>
             </div>
         </div>
