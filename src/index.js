@@ -9,11 +9,13 @@ import Register from './pages/Register';
 import AdminPanel from './pages/AdminPanel';
 import InsertProduct from './pages/InsertProduct';
 import UpdateProduct from './pages/UpdateProduct';
-import DeleteProduct from './pages/DeleteProduct';
 import Carrito from './pages/Carrito';
+import CarritoAdmin from './pages/CarritoAdmin';
 import Verify from './pages/Recovery';
 import Recovery from './pages/Recovery2';
 import About from './pages/About'
+import AboutAdmin from './pages/AboutAdmin'
+import AboutUser from './pages/AboutUser'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -27,11 +29,13 @@ root.render(
       <Route path="/panel" element={<AdminPanel />} />
       <Route path="/insertproduct" element={<InsertProduct />} />
       <Route path="/updateproduct" element={<UpdateProduct />} />
-      <Route path="/deleteproduct" element={<DeleteProduct />} />
       <Route path="/carrito" element={<Carrito/>} />
+      <Route path="/carrito-admin" element={<CarritoAdmin/>} />
       <Route path="/verify" element={<Verify />} />
       <Route path="/recovery" element={<Recovery />} />
       <Route path="/about" element={<About />} />
+      <Route path="/about-admin" element={<AboutAdmin />} />
+      <Route path="/about-us" element={<AboutUser />} />
   </Routes>
 </BrowserRouter>
 );

@@ -1,10 +1,10 @@
 import React from 'react'
-import NavBar from '../components/NavBarGuest'
+import NavBarGuestLogin from '../components/NavBar/NavBarGuestLogin'
 
 const Login = () => {
     return ( 
         <>
-            <NavBar/>
+            <NavBarGuestLogin/>
             <h1>This is the Login Page</h1>
         </>
     );

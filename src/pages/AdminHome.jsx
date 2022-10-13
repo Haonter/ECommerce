@@ -1,8 +1,8 @@
 import React from 'react'
-import NavBarAdmin from '../components/NavBarAdmin';
+import NavBarAdmin from '../components/NavBar/NavBarAdmin';
 import Exhibicion from '../components/Exhibicion';
 
-const Home = () => {
+const HomeAdmin = () => {
     return ( 
         <>
             <head>
@@ -16,4 +16,4 @@ const Home = () => {
     );
 }
 
-export default Home;
+export default HomeAdmin;

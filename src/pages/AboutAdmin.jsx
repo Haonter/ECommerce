@@ -1,10 +1,10 @@
 import React from 'react'
-import NavBarAboutGuest from '../components/NavBar/NavBarGuestAbout'
+import NavBarAboutAdmin from '../components/NavBar/NavBarAdminAbout'
 
-const About = () => {
+const AboutAdmin = () => {
     return ( 
         <>
-            <NavBarAboutGuest/>
+            <NavBarAboutAdmin/>
             <head>
                 <title>Home</title>
             </head>
@@ -15,4 +15,4 @@ const About = () => {
     );
 }
 
-export default About;
+export default AboutAdmin;

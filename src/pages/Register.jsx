@@ -1,11 +1,11 @@
 import React from 'react'
-import NavBar from '../components/NavBarGuest'
+import NavBarGuestRegister from '../components/NavBar/NavBarGuestRegister'
 import RegisterForm from '../components/Register';
 
 const Register = () => {
     return ( 
         <>
-            <NavBar/>
+            <NavBarGuestRegister/>
             <form>
                 <RegisterForm />
                 <button type="submit" className='bg-white rounded'>Registrar</button>

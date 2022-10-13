@@ -1,14 +1,13 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import logo from '../media/Profile.gif'
-import BarraDeBusqueda from './BarraDeBusqueda'
-import MainLogo from '../media/mainLogo.png'
+import logo from '../../media/Profile.gif'
+import MainLogo from '../../media/mainLogo.png'
 
 const navegacion = [
-  { name: 'Inicio', href: 'http://localhost:3000', current: true },
+  { name: 'Inicio', href: 'http://localhost:3000', current: false },
   { name: 'Registrate', href: 'http://localhost:3000/register', current: false },
-  { name: 'Login', href: 'http://localhost:3000/login', current: false },
+  { name: 'Login', href: 'http://localhost:3000/login', current: true },
   { name: 'Ubicanos', href: 'http://localhost:3000/about', current: false }
 ]
 {/*Funcion para trabajar operador ternario en botones*/}
