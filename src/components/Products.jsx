@@ -1,5 +1,6 @@
 import Pagination from "./Pagination";
 
+
 const products = [
     {
         id: 1,
@@ -68,7 +69,7 @@ const products = [
     // More products...
 ]
 
-function Products(props) {
+function Products({children}) {
     return (
         <>
         <div className="bg-white ">
@@ -90,7 +91,7 @@ function Products(props) {
                                 <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
                                 <p className="mt-1 text-lg font-medium text-gray-900">{product.price}</p>
                                 <div>
-
+                                    {children}
                                 </div>
                             </div>
                             
