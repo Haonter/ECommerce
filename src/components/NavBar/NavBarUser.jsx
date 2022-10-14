@@ -5,17 +5,32 @@ import logo from '../../media/Profile.gif'
 import BarraDeBusqueda from '../BarraDeBusqueda'
 import MainLogo from '../../media/mainLogo.png'
 
+
+
 const navegacion = [
   { name: 'Inicio', href: 'http://localhost:3000/Home', current: true },
   { name: 'Carrito', href: 'http://localhost:3000/carrito', current: false },
   { name: 'Ubicanos', href: 'http://Localhost:3000/about-us', current: false }
 ]
+
 {/*Funcion para trabajar operador ternario en botones*/}
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
+
+
 function NavBar() {
+  {/*const navegacion = [
+    <Navegacion currentHome= {props.currentHome} currentCart={props.currentCart} currentAbout={props.currentAbout} />
+    ]
+    const navegacion = [
+      { name: 'Inicio', href: 'http://localhost:3000/Home', current: props.currentHome },
+      { name: 'Carrito', href: 'http://localhost:3000/carrito', current: props.currentCart },
+      { name: 'Ubicanos', href: 'http://Localhost:3000/about-us', current: props.currentAbout }
+  ]*/}
+
+  console.log(navegacion)
   return (
     <Disclosure as="nav" className="bg-gradient-to-b from-zinc-500 to-zinc-100">
       {({ open }) => (
@@ -155,4 +170,4 @@ function NavBar() {
   )
 }
 
-export default NavBar;
+export default NavBar; 
