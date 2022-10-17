@@ -91,7 +91,9 @@ function Exhibicion() {
                             <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
                             <p className="mt-1 text-lg font-medium text-gray-900">{product.price}</p>
                             <Contador/>
-                            <Boton title="Agregar al carrito" marginTop="6" justify="end"  width="full" color="green" textColor='white'  />
+                            <div className="mt-3">
+                                <Boton title="Agregar al carrito" marginy="1" justify="end"  width="full" color="green" textColor='white'  />
+                            </div>
                         </a>
                     ))}
                 </div>
