@@ -90,7 +90,7 @@ function Products({children}) {
                             <div className="flex-col ml-5 w-full">
                                 <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
                                 <p className="mt-1 text-lg font-medium text-gray-900">{product.price}</p>
-                                <div>
+                                <div className="">
                                     {children}
                                 </div>
                             </div>
