@@ -6,7 +6,7 @@ function Contador(){
         <>
             <div className="flex">
                 <Boton title="-" marginTop="2" justify="start" width="0.5" color="white" textColor='black' />
-                <Input type="number" paddingy="2" width="12" fontSize="text-xs"/>
+                <Input type="number" paddingy="2" width="12" fontSize="text-xs" text="text-center"/>
                 <Boton title="+" marginTop="2" justify="start" width="0.5" color="white" textColor='black' />
             </div>
         </>

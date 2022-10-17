@@ -9,6 +9,7 @@ const Carrito = () => {
     return ( 
         <>
             <NavBarUserCarrito/>
+            <h1 className="bg-white text-center pt-5 text-xl	">Mi Carrito</h1>
             <Products>
                     {/* Se declara contador como children de products*/}
                     <Contador/>
