@@ -10,7 +10,7 @@ const Home = () => {
             </head>
             <body>
                 <NavBarUser/>
-                <Exhibicion/>
+                <Exhibicion />
             </body>
         </>
     );

@@ -1,6 +1,9 @@
+import { useState } from "react";
 import Boton from "./Boton";
 import Contador from "./Contador";
 import Pagination from "./Pagination";
+
+
 
 const products = [
     {
@@ -70,7 +73,22 @@ const products = [
     // More products...
 ]
 
+
 function Exhibicion() {
+    const [carrito, setCarrito] = useState([])
+
+    function AgregarCarrito(productId, cantidad){
+        
+        return(
+            <>
+                {/* se usa la funcion anonima con prevState ya que el metodo .push causa errores en react */}
+                {setCarrito((prevState) => [...prevState, {id:productId, cantidad:cantidad}])}
+            </>
+        )  
+    };
+
+    console.log(carrito)
+
     return (
         <>
         <div className="bg-white ">
@@ -80,7 +98,7 @@ function Exhibicion() {
                 <div className=" grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                     <h2 className="sr-only">Obtener productos con metodo GET y eliminar array de ejemplo</h2>
                     {products.map((product) => (
-                        <a key={product.id} href={product.href} className="group shadow-sm shadow-blue-900 px-4 py-4 rounded-xl">
+                        <a id={product.id} key={product.id} href={product.href} className="group shadow-sm shadow-blue-900 px-4 py-4 rounded-xl">
                             <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200  xl:aspect-w-7 xl:aspect-h-8">
                                 <img
                                     src={product.imageSrc}
@@ -92,7 +110,18 @@ function Exhibicion() {
                             <p className="mt-1 text-lg font-medium text-gray-900">{product.price}</p>
                             <Contador/>
                             <div className="mt-3">
-                                <Boton title="Agregar al carrito" marginy="1" justify="end"  width="full" color="green" textColor='white'  />
+                                <Boton 
+                                evento={ 
+                                        () =>
+                                            {   
+                                                const productId = product.id
+                                                const cantidad= 1
+                                                return(
+                                                AgregarCarrito(productId, cantidad)
+                                                )
+                                            }
+                                        } 
+                                title="Agregar al carrito" marginy="1" justify="end"  width="full" color="green" textColor='white'  />
                             </div>
                         </a>
                     ))}

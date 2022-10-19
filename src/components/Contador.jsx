@@ -1,26 +1,49 @@
 
 import Boton from "./Boton";
 import Input from "./input";
+import { useState, useRef, createRef } from "react";
 
 
-var cantidad= 0 
-function Contador(){
+const refInputContador = createRef()
+const InputRefContador = {refInputContador}
+
+
+function Contador(props){
+    var [cantidad,setCantidad] = useState(0);
+    
+function AgregarContador(){
+    return(
+        <>
+            {setCantidad(cantidad + 1)}
+        </>
+    )
+};
+
+
+function RestarContador(){
+    return(
+        <>
+            {setCantidad(cantidad  - 1)}
+        </>
+    )
+};
+
+
+
     return(
         <>
             <div className="flex">
-                <Boton title="-" marginy="2" justify="start" width="0.5" color="white" textColor='black' />
-                <Input id="inputContador" value={cantidad} type="number" paddingy="2" width="12" fontSize="text-xs" text="text-center"/>
-                <Boton function={sumarContador} title="+" marginy="2" justify="start" width="0.5" color="white" textColor='black' />
+                <Boton evento={RestarContador} title="-" marginy="2" justify="start" width="0.5" color="white" textColor='black' />
+                <Input ref={refInputContador}  id="inputContador" value={cantidad} type="number" paddingy="2" width="12" fontSize="text-xs" text="text-center"/>
+                <Boton evento={AgregarContador} title="+" marginy="2" justify="start" width="0.5" color="white" textColor='black' />
             </div>
         </>
     )
-
-    function sumarContador(){
-        return(
-            cantidad++
-        )
-    }
 }
-console.log(cantidad)
+
 
 export default Contador;
+export {refInputContador};
+export {InputRefContador};
+
+/*evento={()=>{setCantidad(cantidad + 1)}}*/
