@@ -4,19 +4,30 @@ import Products from '../components/Products';
 import Contador from '../components/Contador';
 import Opciones from '../components/Opciones';
 import Deleteicon from '../media/deleteicon.png';
+import Exhibicion from '../components/Exhibicion';
 
 const Carrito = () => {
     return ( 
         <>
             <NavBarUserCarrito/>
             <h1 className="bg-white text-center pt-5 text-xl	">Mi Carrito</h1>
-            <Products>
-                    {/* Se declara contador como children de products*/}
+            <Exhibicion flex="flex" marginleft="ml-5" hidden="hidden" cols="sm:grid-cols-3">
+                    <div className='flex flex-col justify-end items-end'>
+                        <Opciones title="Eliminar" marginTop="6"   width="16" color="white" textColor='black' icono={Deleteicon}/>
+                    </div>
+            </Exhibicion>
+
+
+
+
+            
+            {/*<Products>
+                    {/* Se declara contador como children de products
                     <Contador/>
                     <div className='flex flex-col justify-end items-end'>
                         <Opciones title="Eliminar" marginTop="6"   width="16" color="white" textColor='black' icono={Deleteicon}/>
                     </div>
-            </Products>
+            </Products>*/}
         </>
     );
 }
