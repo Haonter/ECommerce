@@ -76,6 +76,11 @@ const products = [
 
 function Exhibicion({children, flex, marginleft, hidden, cols}) {
     const [carrito, setCarrito] = useState([])
+    const [productoCantidad , setproductoCantidad] = useState(0)
+
+    const handleCallback = (inputData) => {
+        setproductoCantidad(inputData)
+    };
 
     function AgregarCarrito(productId, cantidad){
         
@@ -109,8 +114,7 @@ function Exhibicion({children, flex, marginleft, hidden, cols}) {
                             <div className={"flex-col " + marginleft + " w-full"}>
                                 <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
                                 <p className="mt-1 text-lg font-medium text-gray-900">{product.price}</p>
-                            
-                            <Contador/>
+                                <Contador parentCallback = {handleCallback} />
                             </div>
                             {children}
                             <div className="mt-3 flex">
@@ -120,9 +124,11 @@ function Exhibicion({children, flex, marginleft, hidden, cols}) {
                                             () =>
                                                 {   
                                                     const productId = product.id
-                                                    const cantidad= 1
+                                                    const cantidad= productoCantidad
                                                     return(
-                                                    AgregarCarrito(productId, cantidad)
+                                                        <>
+                                                            {AgregarCarrito(productId, cantidad)}
+                                                        </>
                                                     )
                                                 }
                                             } 

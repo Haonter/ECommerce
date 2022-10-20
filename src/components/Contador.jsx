@@ -1,7 +1,8 @@
 
 import Boton from "./Boton";
 import Input from "./input";
-import { useState, useRef, createRef } from "react";
+import { useState, useRef, createRef, useEffect } from "react";
+
 
 
 const refInputContador = createRef()
@@ -9,12 +10,19 @@ const InputRefContador = {refInputContador}
 
 
 function Contador(props){
-    var [cantidad,setCantidad] = useState(0);
+var [cantidad,setCantidad] = useState(0);
     
+useEffect(() => {
+    {props.parentCallback(cantidad)}
+},[cantidad])
+
+
 function AgregarContador(){
     return(
         <>
-            {setCantidad(cantidad + 1)}
+            {setCantidad(cantidad + 1)};
+            
+
         </>
     )
 };
@@ -23,7 +31,7 @@ function AgregarContador(){
 function RestarContador(){
     return(
         <>
-            {setCantidad(cantidad  - 1)}
+            {setCantidad(cantidad  - 1)};
         </>
     )
 };
@@ -45,5 +53,8 @@ function RestarContador(){
 export default Contador;
 export {refInputContador};
 export {InputRefContador};
+
+
+
 
 /*evento={()=>{setCantidad(cantidad + 1)}}*/
