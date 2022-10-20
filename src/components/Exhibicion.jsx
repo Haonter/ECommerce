@@ -73,17 +73,26 @@ const products = [
     // More products...
 ]
 
-
+//-------------FUNCION PADRE Exhibicion---------------------
+//esta funcion retorna el listado de productos recorriendo con .map un array de objetos, este listado incluye el componente contador 
+//y el componente boton en cada uno de los elementos. Adicionalmente esta funcion tambien incluye el componente pagination
+//El componente Exhibicion es reutilizado en las paginas userhome, adminhome, carrito y panel por lo que recibe
+//las props children, flex, marginleft, hidden, cols para ajustarse a cada una de las paginas
 function Exhibicion({children, flex, marginleft, hidden, cols}) {
     const [carrito, setCarrito] = useState([])
     const [productoCantidad , setproductoCantidad] = useState(0)
 
+    //---------------FUNCION handleCallback------------------------------
+    //funcion handleCallback usada para poder traer la cantidad registrada en el input del componente contador esta funcion se le envia 
+    //por props al contador, y en el componente contador esta funcion se ejecuta con un useEffect cada vez que la varible cantidad cambia
     const handleCallback = (inputData) => {
         setproductoCantidad(inputData)
     };
 
+    //--------------FUNCION AgregarCarrito-----------
+    //Como su nombre indica esta es la funcion que se ejecuta cada vez que se le de al boton "Agregar al carrito", enviadosela 
+    //por props al componente boton en su onclick el metodo .push genera errores en react por lo que fue usado prevState
     function AgregarCarrito(productId, cantidad){
-        
         return(
             <>
                 {/* se usa la funcion anonima con prevState ya que el metodo .push causa errores en react */}
@@ -114,7 +123,7 @@ function Exhibicion({children, flex, marginleft, hidden, cols}) {
                             <div className={"flex-col " + marginleft + " w-full"}>
                                 <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
                                 <p className="mt-1 text-lg font-medium text-gray-900">{product.price}</p>
-                                <Contador parentCallback = {handleCallback} />
+                                <Contador hidden="" parentCallback = {handleCallback} />
                             </div>
                             {children}
                             <div className="mt-3 flex">
