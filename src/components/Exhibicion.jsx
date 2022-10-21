@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Boton from "./Boton";
 import Contador from "./Contador";
 import Pagination from "./Pagination";
@@ -81,18 +81,59 @@ const products = [
 function Exhibicion({children, flex, marginleft, hidden, cols}) {
     const [carrito, setCarrito] = useState([])
     const [productoCantidad , setproductoCantidad] = useState(0)
+    const [desactivar, setDesactivar] = useState([])
+
+    useEffect(() => {
+        products.forEach(x => {setDesactivar((prevState) => [...prevState, true])})
+    }, [])
+    
 
     //---------------FUNCION handleCallback------------------------------
     //funcion handleCallback usada para poder traer la cantidad registrada en el input del componente contador esta funcion se le envia 
     //por props al contador, y en el componente contador esta funcion se ejecuta con un useEffect cada vez que la varible cantidad cambia
-    const handleCallback = (inputData) => {
-        setproductoCantidad(inputData)
+    const handleCallbackCantidad = (cantidad, index) => {
+        if (cantidad >= 1){
+            return( setDesactivar((prevState) =>{
+                return prevState.map((item, i) => { 
+                    return (i==index) ? false : item;
+                })}))
+            //setproductoCantidad(cantidad)
+        } else {
+            return( setDesactivar((prevState) =>{
+                return prevState.map((item, i) => { 
+                    return (i==index) ? true : item;
+                })}))
+        }  
+    };
+
+    const handleCallbackDisabled = (state) => {
+        setDesactivar(state)
     };
 
     //--------------FUNCION AgregarCarrito-----------
     //Como su nombre indica esta es la funcion que se ejecuta cada vez que se le de al boton "Agregar al carrito", enviadosela 
     //por props al componente boton en su onclick el metodo .push genera errores en react por lo que fue usado prevState
+    /*function AgregarCarrito(productId, cantidad){
+        return(
+            <>  
+                {/* if lenght > 0 hacer el .map, sino solo agregar 
+                {carrito.map((elemento)=> {
+                            if (elemento.id === productId){
+                                setCarrito({id:productId, cantidad:elemento.cantidad + cantidad})
+                            } else {
+                                {/* se usa la funcion anonima con prevState ya que el metodo .push causa errores en react 
+                                setCarrito((prevState) => [...prevState, {id:productId, cantidad:cantidad}])
+                            }
+                        }
+                    )
+                }
+                
+            </>
+        )  
+    };*/
+
     function AgregarCarrito(productId, cantidad){
+
         return(
             <>
                 {/* se usa la funcion anonima con prevState ya que el metodo .push causa errores en react */}
@@ -102,6 +143,7 @@ function Exhibicion({children, flex, marginleft, hidden, cols}) {
     };
 
     console.log(carrito)
+    console.log(desactivar)
 
     return (
         <>
@@ -111,7 +153,9 @@ function Exhibicion({children, flex, marginleft, hidden, cols}) {
             <section className = " ">
                 <div className={" grid grid-cols-1 gap-y-10 gap-x-6 " + cols }>
                     <h2 className="sr-only">Obtener productos con metodo GET y eliminar array de ejemplo</h2>
-                    {products.map((product) => (
+                    {products.map((product, index) => (
+                        <>
+                        
                         <a id={product.id} key={product.id} href={product.href} className={"group " + flex + " shadow-sm shadow-blue-900 px-4 py-4 rounded-xl"}>
                             <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200  xl:aspect-w-7 xl:aspect-h-8">
                                 <img
@@ -123,12 +167,13 @@ function Exhibicion({children, flex, marginleft, hidden, cols}) {
                             <div className={"flex-col " + marginleft + " w-full"}>
                                 <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
                                 <p className="mt-1 text-lg font-medium text-gray-900">{product.price}</p>
-                                <Contador hidden="" parentCallback = {handleCallback} />
+                                <Contador index={index} hidden="" parentCallback1 = {handleCallbackCantidad} parentCallback2 = {handleCallbackDisabled} />
                             </div>
                             {children}
                             <div className="mt-3 flex">
                                 <div className={hidden}>
-                                    <Boton 
+                                    <Boton
+                                    key= {product.id} 
                                     evento={ 
                                             () =>
                                                 {   
@@ -141,11 +186,14 @@ function Exhibicion({children, flex, marginleft, hidden, cols}) {
                                                     )
                                                 }
                                             } 
-                                    title="Agregar al carrito" marginy="1" justify="end"  width="full" color="green" textColor='white'  />
+                                    disabled={desactivar[index]} title="Agregar al carrito" marginy="1" justify="end"  width="full" color="green" textColor='white'  />
                                 </div>
                             </div>
                         </a>
-                    ))}
+                        </>
+                        )
+                        )
+                        }
                 </div>
             </section>
             </div>

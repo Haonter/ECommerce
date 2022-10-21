@@ -18,8 +18,14 @@ var [cantidad,setCantidad] = useState(0);
 //----Funcion useEffect------
 //Esta funcion es usada para enviar al componente exhibicion el valor de la cantidad en tiempo real cada vez que este se actualice
 useEffect(() => {
-    {props.parentCallback(cantidad)}
+    {props.parentCallback1(cantidad, props.index)}
 },[cantidad])
+
+/*useEffect(() => {
+    if (cantidad >= 1){
+        {props.parentCallback2(false)}
+    } else {props.parentCallback2(true)}
+    },[cantidad])*/
 
 
 //------Funcion AgregarContador
