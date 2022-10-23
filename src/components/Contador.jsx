@@ -17,35 +17,24 @@ var [cantidad,setCantidad] = useState(0);
 
 //----Funcion useEffect------
 //Esta funcion es usada para enviar al componente exhibicion el valor de la cantidad en tiempo real cada vez que este se actualice
+//a su vez le enviado como el index recibido por props como parametro a la funcion parentCallback tambien recibida por props 
 useEffect(() => {
     {props.parentCallback1(cantidad, props.index)}
 },[cantidad])
-
-/*useEffect(() => {
-    if (cantidad >= 1){
-        {props.parentCallback2(false)}
-    } else {props.parentCallback2(true)}
-    },[cantidad])*/
 
 
 //------Funcion AgregarContador
 //funcion usada para el boton + del contador
 function AgregarContador(){
-    return(
-        <>
-            {setCantidad(cantidad + 1)};
-        </>
-    )
+    setCantidad(cantidad + 1)
 };
 
 //------Funcion RestarContador
 //funcion usada para el boton - del contador
 function RestarContador(){
-    return(
-        <>
-            {setCantidad(cantidad  - 1)};
-        </>
-    )
+            console.log(cantidad)
+            if (cantidad > 0) setCantidad(cantidad  - 1)
+            else setCantidad(0)
 };
 
     return(

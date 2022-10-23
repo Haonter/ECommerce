@@ -13,7 +13,7 @@ function Boton(props) {
         </div>*/
         <button
         className={" shadow shadow-gray-400 sm:my-" + props.marginy + " w-" + props.width + " justify-center items-center rounded-full border border-transparent bg-" + props.color + "-400 py-1 px-5 text-sm font-medium text-" + props.textColor + " md:py-1 md:px-4 md:text-sm disabled:bg-gray-400 "}
-        onClick={() => {props.evento()}}
+        onClick={() => props.evento()}
         disabled = {props.disabled}
         >
             {props.title}
