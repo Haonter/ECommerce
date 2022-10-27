@@ -6,6 +6,7 @@ function Opciones(props) {
                         className={"flex w-" + props.width + " items-center justify-center rounded-md border border-transparent bg-" + props.color + "-400 py-1  text-sm font-medium text-" + props.textColor + " hover:bg-gray-400 md:py-1 md:px-4 md:text-sm"}
                         alt="icono"
                         href={props.url}
+                        onClick={() => props.evento()}
                     />
             </div>
         </div>

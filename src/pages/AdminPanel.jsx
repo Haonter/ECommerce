@@ -8,7 +8,7 @@ const AdminPanel = () => {
     return ( 
         <>
             <NavBarAdminPanel/>
-            <Exhibicion flex="flex" marginleft="ml-5" hidden="hidden" cols="sm:grid-cols-3">
+            <Exhibicion map="products" flex="flex" marginleft="ml-5" hidden="hidden" cols="sm:grid-cols-3">
                 {/* recibe como children el boton de editar y el boton de eliminar*/}
                 <Boton title="Editar" marginTop="6" justify="end"  width="full" color="green" textColor='white'/>
                 <Boton title="Eliminar" marginTop="6" justify="end"  width="full" color="green" textColor='white'/>

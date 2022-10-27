@@ -1,7 +1,7 @@
 function Input(props) {
     return (
         <>
-            <div class="">
+            <div class={props.class}>
                 <label for={props.title} 
                     class="block pl-2 text-sm font-medium text-gray-700 ">{props.title}</label>
 

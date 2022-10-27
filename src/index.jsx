@@ -17,19 +17,20 @@ import About from './pages/About'
 import AboutAdmin from './pages/AboutAdmin'
 import AboutUser from './pages/AboutUser'
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
   <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/Home" element={<UserHome />} />
+      <Route path="/Home" element={<UserHome  />} />
       <Route path="/adminhome" element={<AdminHome />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/panel" element={<AdminPanel />} />
       <Route path="/insertproduct" element={<InsertProduct />} />
       <Route path="/updateproduct" element={<UpdateProduct />} />
-      <Route path="/carrito" element={<Carrito/>} />
+      <Route path="/carrito" element={<Carrito />} />
       <Route path="/carrito-admin" element={<CarritoAdmin/>} />
       <Route path="/verify" element={<Verify />} />
       <Route path="/recovery" element={<Recovery />} />
@@ -39,3 +40,5 @@ root.render(
   </Routes>
 </BrowserRouter>
 );
+
+

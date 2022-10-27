@@ -20,7 +20,7 @@ function classNames(...classes) {
 
 
 
-function NavBar() {
+function NavBar(props) {
   {/*const navegacion = [
     <Navegacion currentHome= {props.currentHome} currentCart={props.currentCart} currentAbout={props.currentAbout} />
     ]

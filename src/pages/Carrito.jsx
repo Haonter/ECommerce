@@ -1,33 +1,14 @@
 import React from 'react'
 import NavBarUserCarrito from '../components/NavBar/NavBarUserCarrito'
-import Products from '../components/Products';
-import Contador from '../components/Contador';
-import Opciones from '../components/Opciones';
-import Deleteicon from '../media/deleteicon.png';
-import Exhibicion from '../components/Exhibicion';
+import ExhibicionCarrito from '../components/ExhibicionCarrito';
+
 
 const Carrito = () => {
     return ( 
         <>
             <NavBarUserCarrito/>
             <h1 className="bg-white text-center pt-5 text-xl	">Mi Carrito</h1>
-            <Exhibicion flex="flex" marginleft="ml-5" hidden="hidden" cols="sm:grid-cols-3">
-                    <div className='flex flex-col justify-end items-end'>
-                        <Opciones title="Eliminar" marginTop="6"   width="16" color="white" textColor='black' icono={Deleteicon}/>
-                    </div>
-            </Exhibicion>
-
-
-
-
-            
-            {/*<Products>
-                    {/* Se declara contador como children de products
-                    <Contador/>
-                    <div className='flex flex-col justify-end items-end'>
-                        <Opciones title="Eliminar" marginTop="6"   width="16" color="white" textColor='black' icono={Deleteicon}/>
-                    </div>
-            </Products>*/}
+            <ExhibicionCarrito flex="flex" marginleft="ml-5" hidden="hidden" cols="sm:grid-cols-3" />
         </>
     );
 }

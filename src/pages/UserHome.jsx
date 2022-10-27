@@ -2,6 +2,9 @@ import React from 'react'
 import NavBarUser from '../components/NavBar/NavBarUser';
 import Exhibicion from '../components/Exhibicion';
 
+
+
+
 const Home = () => {
     return ( 
         <>
@@ -9,8 +12,8 @@ const Home = () => {
                 <title>Home</title>
             </head>
             <body>
-                <NavBarUser/>
-                <Exhibicion cols="sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8" />
+                <NavBarUser />
+                <Exhibicion map="products" cols="sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8"  />
             </body>
         </>
     );
