@@ -4,7 +4,6 @@ import Contador from "./Contador";
 import Pagination from "./Pagination";
 import Opciones from "./Opciones";
 import Deleteicon from '../media/deleteicon.png'; 
-
 import Input from "./input";
 
 
