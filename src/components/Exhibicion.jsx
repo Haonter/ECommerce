@@ -80,39 +80,60 @@ const products = [
 function Exhibicion({children, flex, marginleft, hidden, cols, map}) {
     const [carrito, setCarrito] = useState([])
     const [productoCantidad , setproductoCantidad] = useState([])
-    const [desactivar, setDesactivar] = useState([])
-    const handleCallbackCantidadEstado = (productoCantidad, index) => {
-        if (productoCantidad >= 1) setDesactivar(() => desactivar.map((elemento, i) =>(i==index) ? false : elemento))
-        else setDesactivar(() => desactivar.map((elemento, i) => (i==index) ? true : elemento)) 
-    };
+
+    // const handleCallbackCantidadEstado = (productoCantidad, index) => {
+    //     if (productoCantidad >= 1) setDesactivar(() => desactivar.map((elemento, i) =>(i==index) ? false : elemento))
+    //     else setDesactivar(() => desactivar.map((elemento, i) => (i==index) ? true : elemento)) 
+    // };
     
-    const handle = () => {
-            productoCantidad.map((elemento, index) => {
-            if(elemento >= 1){ setDesactivar(() => desactivar.map((element, i) =>(i==index) ? false : element))}
-            else {setDesactivar(() => desactivar.map((element, i) => (i==index) ? true : element)) }
-        })}
+    // function handle(){
+    //         console.log(productoCantidad)
+    //         productoCantidad.map((elemento, index) => {
+    //         if(elemento >= 1){ 
+    //             setDesactivar(() => {
+    //                 const b = desactivar.map((element, i) => {
+    //                     if (i==index) {
+    //                         return false;
+    //                     } else {
+    //                         return element}
+    //                     });
+    //                     console.log(b)
+    //                     return b })
+    //             } else {setDesactivar(() => desactivar.map((element, i) => (i==index) ? true : element))}
+    //         });console.log(desactivar)}
 
     useEffect(() => {
-        products.forEach( elemento => {setCarrito((prevState) => [...prevState, {
-            id:elemento.id , 
-            name: elemento.name, 
-            description: elemento.description , 
-            price:elemento.price, 
-            desc:elemento.desc, 
-            imagen: elemento.imagen, 
-            cantidad:0}])});
-        setDesactivar(() => products.map( () => true));
-        setproductoCantidad(() => products.map( () => 0));
+        // const carrito = JSON.parse(localStorage.getItem('carrito'));
+        // carrito.forEach( elemento => {setCarrito((prevState) => [...prevState, {
+        //     id:elemento.id , 
+        //     name: elemento.name, 
+        //     description: elemento.description , 
+        //     price:elemento.price, 
+        //     desc:elemento.desc, 
+        //     imagen: elemento.imagen, 
+        //     cantidad:0}])});
+    
+        const carrito = JSON.parse(localStorage.getItem('carrito'));        
+        if (carrito) {
+            setCarrito(carrito);
+        }    
+        
+        setproductoCantidad(() => products.map((producto) => {
+            const productoEnCarrito = carrito.find(c => c.id == producto.id);
+
+            return (productoEnCarrito != null) ? productoEnCarrito.cantidad : 0;
+        }));
     }, [])
+
+    useEffect(() => {        
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+    }, [carrito]);
 
     //------Funcion AgregarContador
     //funcion usada para el boton + del contador
     function AgregarContador(index){
         setproductoCantidad(() => productoCantidad.map((elemento, i) =>(i==index) ? 
         elemento + 1 : elemento));
-        handle()
-        console.log(productoCantidad)
-        console.log(desactivar)
     };
 
     //------Funcion RestarContador
@@ -120,27 +141,35 @@ function Exhibicion({children, flex, marginleft, hidden, cols, map}) {
     function RestarContador(index){
         setproductoCantidad(() => productoCantidad.map((elemento, i) =>(i==index && elemento - 1 >= 0) ? 
         elemento - 1 : elemento));
-        handle()
     };
 
-    function AgregarCarrito(index, cantidad){
-        setCarrito(() => carrito.map((elemento, i) =>(i==index) ? 
-        {id:elemento.id , 
-        name: elemento.name, 
-        description: elemento.description , 
-        price:elemento.price, 
-        desc:elemento.desc, 
-        imagen: elemento.imagen, 
-        cantidad:cantidad} : elemento))
-        console.log(carrito)
+    function AgregarCarrito(producto, cantidad) {
+
+        const indiceCarrito = carrito.findIndex(c => c.id == producto.id);
+
+        if (indiceCarrito < 0) {
+            const nuevoCarrito = {...producto};
+            nuevoCarrito.cantidad = cantidad;
+
+            setCarrito((prevState) => [...prevState, nuevoCarrito]);        
+        } else {
+            setCarrito((prevState) => prevState.map((productoEnCarrito, index) => {
+                if (index == indiceCarrito) productoEnCarrito.cantidad = cantidad;
+            
+                return productoEnCarrito;
+            }));
+        }
+
+        // setCarrito(() => carrito.map((elemento, i) =>(i==index) ? 
+        // {id:elemento.id , 
+        // name: elemento.name, 
+        // description: elemento.description , 
+        // price:elemento.price, 
+        // desc:elemento.desc, 
+        // imagen: elemento.imagen, 
+        // cantidad:cantidad} : elemento))
+        // console.log(carrito)
     };
-
-    useEffect(() => {
-        localStorage.setItem('carrito', JSON.stringify(carrito));
-    }, [carrito]);
-
-
-
 
     return (
         <>
@@ -151,7 +180,7 @@ function Exhibicion({children, flex, marginleft, hidden, cols, map}) {
                 <div className={" grid grid-cols-1 gap-y-10 gap-x-6 " + cols }>
                     <h2 className="sr-only">Obtener productos con metodo GET y eliminar array de ejemplo</h2>
                     
-                            {carrito.map((product, index) => (
+                            {products.map((product, index) => (
                                 <>
                                     <a id={product.id} key={product.id} href={product.href} className={"group " + flex + " shadow-sm shadow-blue-900 px-4 py-4 rounded-xl"}>
                                         <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200  xl:aspect-w-7 xl:aspect-h-8">
@@ -182,12 +211,12 @@ function Exhibicion({children, flex, marginleft, hidden, cols, map}) {
                                                                 // const cantidad= productoCantidad                        
                                                                 return(
                                                                     <>
-                                                                        {AgregarCarrito(index, productoCantidad)}
+                                                                        {AgregarCarrito(product, productoCantidad[index])}
                                                                     </>
                                                                 )
                                                             }
                                                         } 
-                                                disabled={desactivar[index]} title="Agregar al carrito" marginy="1" justify="end"  width="full" color="green" textColor='white'  />
+                                                disabled={productoCantidad[index] < 1 } title="Agregar al carrito" marginy="1" justify="end"  width="full" color="green" textColor='white'  />
                                             </div>
                                         </div>
                                     </a>
