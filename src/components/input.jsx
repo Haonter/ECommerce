@@ -6,7 +6,7 @@ function Input(props) {
                     class="block pl-2 text-sm font-medium text-gray-700 ">{props.title}</label>
 
                 <input type={props.type} 
-                    name={props.title} 
+                    name={props.name} 
                     id={props.id} 
                     ref={props.ref}
                     value={props.value}

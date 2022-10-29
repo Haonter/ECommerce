@@ -10,7 +10,7 @@ const HomeAdmin = () => {
             </head>
             <body>
                 <NavBarAdmin/>
-                <Exhibicion/>
+                <Exhibicion map="products" cols="sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8" hiddenop="hidden"  />
             </body>
         </>
     );

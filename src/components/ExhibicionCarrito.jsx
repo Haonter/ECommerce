@@ -91,9 +91,9 @@ function ExhibicionCarrito({flex, marginleft, hidden, cols}) {
                                                         <p className="mt-1 text-lg font-medium text-gray-900">{product.price}</p>
                                                         {/* CONTADOR */}
                                                         <div className="flex">
-                                                            <Boton  evento={() => {RestarContador(index)}} title="-" marginy="2" justify="start" width="0.5" color="white" textColor='black' />
+                                                            <Boton  evento={() => {RestarContador(index)}} title="-" marginy="2" justify="start" width="0.5" color="white" textColor='black' hidden="hidden"/>
                                                             <Input  id="inputContador" value={product.cantidad} type="number" paddingy="2" width="12" fontSize="text-xs" text="text-center"/>
-                                                            <Boton evento={() => {AgregarContador(index)}} title="+" marginy="2" justify="start" width="0.5" color="white" textColor='black' />
+                                                            <Boton evento={() => {AgregarContador(index)}} title="+" marginy="2" justify="start" width="0.5" color="white" textColor='black' hidden="hidden"/>
                                                         </div>
                                                     </div>
                                                     <div className='flex flex-col justify-end items-end'>

@@ -3,8 +3,11 @@ import Boton from "./Boton";
 import Contador from "./Contador";
 import Pagination from "./Pagination";
 import Input from "./input";
+import Opciones from './Opciones'
+import Deleteicon from '../media/deleteicon.png'; 
+import Updateicon from '../media/updateicon.png'; 
 
-
+//al darle a comprar debe limpiarse el localstorage
 
 
 
@@ -77,7 +80,7 @@ const products = [
 ]
 
 
-function Exhibicion({children, flex, marginleft, hidden, cols, map}) {
+function Exhibicion({children, flex, marginleft, hidden, cols, map, hiddenop}) {
     const [carrito, setCarrito] = useState([])
     const [productoCantidad , setproductoCantidad] = useState([])
 
@@ -193,13 +196,17 @@ function Exhibicion({children, flex, marginleft, hidden, cols, map}) {
                                             <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
                                             <p className="mt-1 text-lg font-medium text-gray-900">{product.price}</p>
                                             {/* CONTADOR */}
-                                            <div className="flex">
-                                                <Boton  evento={() => {RestarContador(index)}} title="-" marginy="2" justify="start" width="0.5" color="white" textColor='black' />
+                                            <div className={"flex " + hidden}>
+                                                <Boton  evento={() => {RestarContador(index)}} title="-" marginy="2" justify="start" width="0.5" color="white" textColor='black' hidden="hidden"/>
                                                 <Input  id="inputContador" value={productoCantidad[index]} type="number" paddingy="2" width="12" fontSize="text-xs" text="text-center"/>
-                                                <Boton evento={() => {AgregarContador(index)}} title="+" marginy="2" justify="start" width="0.5" color="white" textColor='black' />
+                                                <Boton evento={() => {AgregarContador(index)}} title="+" marginy="2" justify="start" width="0.5" color="white" textColor='black' hidden="hidden"/>
                                             </div>
+                                            <div className={'flex justify-end items-end ' + hiddenop}>
+                                                <Opciones title="Eliminar" marginTop="6"   width="16" color="white" textColor='black' icono={Updateicon}/>
+                                                <Opciones title="Eliminar" marginTop="6"   width="16" color="white" textColor='black' icono={Deleteicon}/>
+                                            </div>     
                                         </div>
-                                        {children}
+                                        
                                         <div className="mt-3 flex">
                                             <div className={hidden}>
                                                 <Boton
@@ -216,7 +223,7 @@ function Exhibicion({children, flex, marginleft, hidden, cols, map}) {
                                                                 )
                                                             }
                                                         } 
-                                                disabled={productoCantidad[index] < 1 } title="Agregar al carrito" marginy="1" justify="end"  width="full" color="green" textColor='white'  />
+                                                disabled={productoCantidad[index] < 1 } title="Agregar al carrito" marginy="1" justify="end"  width="full" color="green" textColor='white' hidden="hidden" />
                                             </div>
                                         </div>
                                     </a>
