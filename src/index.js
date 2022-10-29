@@ -20,6 +20,7 @@ import AboutUser from './pages/AboutUser'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
+<<<<<<< Updated upstream:src/index.js
   <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/Home" element={<UserHome />} />
@@ -37,5 +38,24 @@ root.render(
       <Route path="/about-admin" element={<AboutAdmin />} />
       <Route path="/about-us" element={<AboutUser />} />
   </Routes>
+=======
+    <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Home" element={<UserHome  />} />
+        <Route path="/adminhome" element={<AdminHome />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/panel" element={<AdminPanel />} />
+        <Route path="/insertproduct" element={<InsertProduct />} />
+        <Route path="/updateproduct" element={<UpdateProduct />} />
+        <Route path="/carrito" element={<Carrito />} />
+        <Route path="/carrito-admin" element={<CarritoAdmin/>} />
+        <Route path="/verify" element={<Verify />} />
+        <Route path="/recovery" element={<Recovery />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/about-admin" element={<AboutAdmin />} />
+        <Route path="/about-us" element={<AboutUser />} />
+    </Routes>
+>>>>>>> Stashed changes:src/index.jsx
 </BrowserRouter>
 );
