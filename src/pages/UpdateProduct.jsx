@@ -30,7 +30,17 @@ const UpdateProduct = () => {
             {/*colocar la ruta de path de diego */}
             <form method='PATH' action={"http://localhost:5000/updateProduct/"+id}>
                     <div className='flex flex-col mt-10 justify-start items-start ml-72  '>
-                        <div className='flex space-x-20 w-full'>
+                        <div className='flex space-x-20'>
+                            <Input 
+                                title="ID"  
+                                name="ID" 
+                                type="text" 
+                                paddingy="3" 
+                                width="full" 
+                                fontSize="text-base" 
+                                class=" w-full "
+                                //colocar el nombre correcto del campo
+                                value = {producto.id}/>
                             <Input 
                                 title="Nombre"  
                                 name="Nombre" 
@@ -38,10 +48,9 @@ const UpdateProduct = () => {
                                 paddingy="3" 
                                 width="full" 
                                 fontSize="text-base" 
-                                class=" w-2/5 "
+                                class=" w-full "
                                 //colocar el nombre correcto del campo
                                 value = {producto.Nombre}/>
-                                
                             <Input 
                                 title="Imagen" 
                                 name="Imagen" 
@@ -49,7 +58,7 @@ const UpdateProduct = () => {
                                 paddingy="3" 
                                 width="full" 
                                 fontSize="text-base" 
-                                class="w-auto" 
+                                class="w-full" 
                                 //colocar el nombre correcto del campo
                                 value = {producto.imagen}/>
                         </div>

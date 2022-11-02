@@ -9,7 +9,15 @@ const InsertProduct = () => {
             <h1 className="bg-white text-center pt-5 text-xl">Nuevo producto</h1>
             <form method='POST' action="http://localhost:5000/insertproduct">
                     <div className='flex flex-col mt-10 justify-start items-start ml-72  '>
-                        <div className='flex space-x-20 w-full'>
+                        <div className='flex space-x-20'>
+                        <Input 
+                                title="ID"  
+                                name="ID" 
+                                type="text" 
+                                paddingy="3" 
+                                width="full" 
+                                fontSize="text-base" 
+                                class=" w-full "/>
                             <Input 
                                 title="Nombre"  
                                 name="Nombre" 
@@ -17,7 +25,7 @@ const InsertProduct = () => {
                                 paddingy="3" 
                                 width="full" 
                                 fontSize="text-base" 
-                                class=" w-2/5 "/>
+                                class=" w-full "/>
                             <Input 
                                 title="Imagen" 
                                 name="Imagen" 
@@ -25,7 +33,7 @@ const InsertProduct = () => {
                                 paddingy="3" 
                                 width="full" 
                                 fontSize="text-base" 
-                                class="w-auto" />
+                                class="w-full" />
                         </div>
                         <Input 
                             title="Descripcion" 
