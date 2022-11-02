@@ -204,7 +204,8 @@ function Exhibicion({children, flex, marginleft, hidden, cols, map, hiddenop, hr
                                             </div>
                                             <div className={'flex justify-end items-end ' + hiddenop}>
                                                 <Opciones title="Editar" marginTop="16"   width="16" color="white" textColor='black' icono={Updateicon} url={"http://localhost:3000/updateproduct/" + product.id }/>
-                                                <Opciones title="Eliminar" marginTop="16"   width="16" color="white" textColor='black' icono={Deleteicon} evento={DeleteProduct(product.id)} />
+                                                {/* agregar al boton de eliminar evento={DeleteProduct(product.id)} */}
+                                                <Opciones title="Eliminar" marginTop="16"   width="16" color="white" textColor='black' icono={Deleteicon} />
                                             </div>     
                                         </div>
                                         
