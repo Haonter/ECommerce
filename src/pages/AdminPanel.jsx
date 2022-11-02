@@ -1,7 +1,5 @@
 import React from 'react'
 import NavBarAdminPanel from '../components/NavBar/NavBarAdminPanel'
-import Products from '../components/Products';
-import Boton from '../components/Boton';
 import Exhibicion from '../components/Exhibicion'
 import Opciones from '../components/Opciones'
 import Deleteicon from '../media/deleteicon.png'; 

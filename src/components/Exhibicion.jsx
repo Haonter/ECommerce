@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Boton from "./Boton";
-import Contador from "./Contador";
 import Pagination from "./Pagination";
 import Input from "./input";
 import Opciones from './Opciones'
@@ -85,45 +84,18 @@ function Exhibicion({children, flex, marginleft, hidden, cols, map, hiddenop, hr
     const [carrito, setCarrito] = useState([])
     const [productoCantidad , setproductoCantidad] = useState([])
 
-    // const handleCallbackCantidadEstado = (productoCantidad, index) => {
-    //     if (productoCantidad >= 1) setDesactivar(() => desactivar.map((elemento, i) =>(i==index) ? false : elemento))
-    //     else setDesactivar(() => desactivar.map((elemento, i) => (i==index) ? true : elemento)) 
-    // };
-    
-    // function handle(){
-    //         console.log(productoCantidad)
-    //         productoCantidad.map((elemento, index) => {
-    //         if(elemento >= 1){ 
-    //             setDesactivar(() => {
-    //                 const b = desactivar.map((element, i) => {
-    //                     if (i==index) {
-    //                         return false;
-    //                     } else {
-    //                         return element}
-    //                     });
-    //                     console.log(b)
-    //                     return b })
-    //             } else {setDesactivar(() => desactivar.map((element, i) => (i==index) ? true : element))}
-    //         });console.log(desactivar)}
-
+    //useEffect que revisa si el localstorage tiene informacion del carrito, si existe, la registra en la variable carrito para mantener la 
+    //informacion ya indicada en el carrito, a su vez se evalua cada producto en products, si el id de algun producto en products coincide con el id
+    //de algun producto en el carrito, el array de la const productoCantidad se actualizara con el valor de cantidad que tenga en producto en el carrito, 
+    //sino el valor se actualizara con cero, asi los inputs de los contadores siempre mostraran la cantidad correspondiente a cada producto
     useEffect(() => {
-        // const carrito = JSON.parse(localStorage.getItem('carrito'));
-        // carrito.forEach( elemento => {setCarrito((prevState) => [...prevState, {
-        //     id:elemento.id , 
-        //     name: elemento.name, 
-        //     description: elemento.description , 
-        //     price:elemento.price, 
-        //     desc:elemento.desc, 
-        //     imagen: elemento.imagen, 
-        //     cantidad:0}])});
-    
         const carrito = JSON.parse(localStorage.getItem('carrito'));        
         if (carrito) {
             setCarrito(carrito);
         }    
         
         setproductoCantidad(() => products.map((producto) => {
-            const productoEnCarrito = carrito.find(c => c.id == producto.id);
+            const productoEnCarrito = carrito.find(c => c.id === producto.id);
 
             return (productoEnCarrito != null) ? productoEnCarrito.cantidad : 0;
         }));
@@ -136,29 +108,37 @@ function Exhibicion({children, flex, marginleft, hidden, cols, map, hiddenop, hr
     //------Funcion AgregarContador
     //funcion usada para el boton + del contador
     function AgregarContador(index){
-        setproductoCantidad(() => productoCantidad.map((elemento, i) =>(i==index) ? 
+        setproductoCantidad(() => productoCantidad.map((elemento, i) =>(i===index) ? 
         elemento + 1 : elemento));
     };
 
     //------Funcion RestarContador
     //funcion usada para el boton - del contador
     function RestarContador(index){
-        setproductoCantidad(() => productoCantidad.map((elemento, i) =>(i==index && elemento - 1 >= 0) ? 
+        setproductoCantidad(() => productoCantidad.map((elemento, i) =>(i===index && elemento - 1 >= 0) ? 
         elemento - 1 : elemento));
     };
 
     function AgregarCarrito(producto, cantidad) {
+        //el parametro producto recibe el objeto del producto COMPLETO con toda su informacion
+        //el findIndex si es false regresa -1, es decir, si el producto no esta en el carrito
+        const indiceCarrito = carrito.findIndex(c => c.id === producto.id);
 
-        const indiceCarrito = carrito.findIndex(c => c.id == producto.id);
-
+        //si el producto no esta en el carrito se agrega
         if (indiceCarrito < 0) {
-            const nuevoCarrito = {...producto};
-            nuevoCarrito.cantidad = cantidad;
-
-            setCarrito((prevState) => [...prevState, nuevoCarrito]);        
+            //descomponemos el objeto producto con los ... debido a que sino igualaria un objeto con otro y el cambio que se le aplique a uno
+            //se le aplicara al otro. En cambio con los ... estamos creando un objeto nuevo con los valores del anterior
+            const nuevoProducto = {...producto};
+            //se le agrega al numero producto la propiedad de cantidad (ya que los productos originalmente no vienen con esta propiedad)
+            nuevoProducto.cantidad = cantidad;
+            //se registra el nuevo producto en el carrito manteniendo los productos anteriores a este
+            setCarrito((prevState) => [...prevState, nuevoProducto]);
+            
+        // si el producto si existe en el carrito (const indiceCarrito -> se consigue igualar el id del producto seleccionado con el id de algun producto del carrito y se toma su index del carrito)
         } else {
+            //se mapea el carrito o su prevstate para ubicar el elemento cuyo index coincida con el index obtenido en indiceCarrito y se edita su cantidad
             setCarrito((prevState) => prevState.map((productoEnCarrito, index) => {
-                if (index == indiceCarrito) productoEnCarrito.cantidad = cantidad;
+                if (index === indiceCarrito) productoEnCarrito.cantidad = cantidad;
             
                 return productoEnCarrito;
             }));
@@ -190,6 +170,7 @@ function Exhibicion({children, flex, marginleft, hidden, cols, map, hiddenop, hr
                                         <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200  xl:aspect-w-7 xl:aspect-h-8">
                                             <img
                                                 src={product.imagen}
+                                                alt="Not found"
                                                 className="h-full w-full object-cover object-center group-hover:opacity-75"
                                             />
                                         </div>
