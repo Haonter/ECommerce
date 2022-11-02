@@ -13,7 +13,7 @@ const Home = () => {
             </head>
             <body>
                 <NavBarUser />
-                <Exhibicion map="products" cols="sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8"  />
+                <Exhibicion map="products" cols="sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8" hiddenop="hidden" href="http://localhost:3000/about-product" />
             </body>
         </>
     );

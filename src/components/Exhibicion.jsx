@@ -6,6 +6,7 @@ import Input from "./input";
 import Opciones from './Opciones'
 import Deleteicon from '../media/deleteicon.png'; 
 import Updateicon from '../media/updateicon.png'; 
+import DeleteProduct from "../pages/DeleteProduct";
 
 //al darle a comprar debe limpiarse el localstorage
 
@@ -80,7 +81,7 @@ const products = [
 ]
 
 
-function Exhibicion({children, flex, marginleft, hidden, cols, map, hiddenop}) {
+function Exhibicion({children, flex, marginleft, hidden, cols, map, hiddenop, href}) {
     const [carrito, setCarrito] = useState([])
     const [productoCantidad , setproductoCantidad] = useState([])
 
@@ -185,7 +186,7 @@ function Exhibicion({children, flex, marginleft, hidden, cols, map, hiddenop}) {
                     
                             {products.map((product, index) => (
                                 <>
-                                    <a id={product.id} key={product.id} href={product.href} className={"group " + flex + " shadow-sm shadow-blue-900 px-4 py-4 rounded-xl"}>
+                                    <a id={product.id} key={product.id} className={"group " + flex + " shadow-sm shadow-blue-900 px-4 py-4 rounded-xl"}>
                                         <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200  xl:aspect-w-7 xl:aspect-h-8">
                                             <img
                                                 src={product.imagen}
@@ -193,7 +194,7 @@ function Exhibicion({children, flex, marginleft, hidden, cols, map, hiddenop}) {
                                             />
                                         </div>
                                         <div className={"flex-col " + marginleft + " w-full"}>
-                                            <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
+                                            <a className="mt-4 text-lg	 text-gray-700" href={href}>{product.name}</a>
                                             <p className="mt-1 text-lg font-medium text-gray-900">{product.price}</p>
                                             {/* CONTADOR */}
                                             <div className={"flex " + hidden}>
@@ -202,8 +203,8 @@ function Exhibicion({children, flex, marginleft, hidden, cols, map, hiddenop}) {
                                                 <Boton evento={() => {AgregarContador(index)}} title="+" marginy="2" justify="start" width="0.5" color="white" textColor='black' hidden="hidden"/>
                                             </div>
                                             <div className={'flex justify-end items-end ' + hiddenop}>
-                                                <Opciones title="Eliminar" marginTop="6"   width="16" color="white" textColor='black' icono={Updateicon}/>
-                                                <Opciones title="Eliminar" marginTop="6"   width="16" color="white" textColor='black' icono={Deleteicon}/>
+                                                <Opciones title="Editar" marginTop="16"   width="16" color="white" textColor='black' icono={Updateicon} url={"http://localhost:3000/updateproduct/" + product.id }/>
+                                                <Opciones title="Eliminar" marginTop="16"   width="16" color="white" textColor='black' icono={Deleteicon} evento={DeleteProduct(product.id)} />
                                             </div>     
                                         </div>
                                         

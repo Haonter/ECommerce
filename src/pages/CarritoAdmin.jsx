@@ -7,7 +7,7 @@ const CarritoAdmin = () => {
         <>
             <NavBarAdminCarrito/>
             <h1 className="bg-white text-center pt-5 text-xl	">Mi Carrito</h1>
-            <ExhibicionCarrito flex="flex" marginleft="ml-5" hidden="hidden" cols="sm:grid-cols-3" />
+            <ExhibicionCarrito flex="flex" marginleft="ml-5" hidden="hidden" cols="sm:grid-cols-3" href="/about-product-admin"/>
         </>
     );
 }

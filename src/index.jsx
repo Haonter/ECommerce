@@ -16,7 +16,9 @@ import Recovery from './pages/Recovery2';
 import About from './pages/About'
 import AboutAdmin from './pages/AboutAdmin'
 import AboutUser from './pages/AboutUser'
-
+import AboutProduct from './pages/AboutProduct'
+import AboutProductAdmin from './pages/AboutProductAdmin'
+import DeleteProduct from './pages/DeleteProduct';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -29,7 +31,10 @@ root.render(
       <Route path="/register" element={<Register />} />
       <Route path="/panel" element={<AdminPanel />} />
       <Route path="/insertproduct" element={<InsertProduct />} />
-      <Route path="/updateproduct" element={<UpdateProduct />} />
+      <Route path="/updateproduct/:id" element={<UpdateProduct />} />
+      <Route path="/deleteproduct/:id" element={<DeleteProduct />} />
+      <Route path="/about-product" element={<AboutProduct />} />
+      <Route path="/about-product-admin" element={<AboutProductAdmin />} />
       <Route path="/carrito" element={<Carrito />} />
       <Route path="/carrito-admin" element={<CarritoAdmin/>} />
       <Route path="/verify" element={<Verify />} />
@@ -37,6 +42,7 @@ root.render(
       <Route path="/about" element={<About />} />
       <Route path="/about-admin" element={<AboutAdmin />} />
       <Route path="/about-us" element={<AboutUser />} />
+      
   </Routes>
 </BrowserRouter>
 );

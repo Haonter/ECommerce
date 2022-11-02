@@ -11,7 +11,7 @@ import Input from "./input";
 
 
 
-function ExhibicionCarrito({flex, marginleft, hidden, cols}) {
+function ExhibicionCarrito({flex, marginleft, hidden, cols, href}) {
     const [carrito, setCarrito] = useState([])
 
     console.log(carrito)
@@ -79,7 +79,7 @@ function ExhibicionCarrito({flex, marginleft, hidden, cols}) {
                                     .filter( carrito => carrito.cantidad !== 0)
                                     .map((product, index) => (
                                             <>
-                                                <a id={product.id} key={product.id} href={product.href} className={"group " + flex + " shadow-sm shadow-blue-900 px-4 py-4 rounded-xl"}>
+                                                <a id={product.id} key={product.id} className={"group " + flex + " shadow-sm shadow-blue-900 px-4 py-4 rounded-xl"}>
                                                     <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200  xl:aspect-w-7 xl:aspect-h-8">
                                                         <img
                                                             src={product.imagen}
@@ -87,7 +87,7 @@ function ExhibicionCarrito({flex, marginleft, hidden, cols}) {
                                                         />
                                                     </div>
                                                     <div className={"flex-col " + marginleft + " w-full"}>
-                                                        <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
+                                                        <a className="mt-4 text-lg	 text-gray-700" href={href}>{product.name}</a>
                                                         <p className="mt-1 text-lg font-medium text-gray-900">{product.price}</p>
                                                         {/* CONTADOR */}
                                                         <div className="flex">

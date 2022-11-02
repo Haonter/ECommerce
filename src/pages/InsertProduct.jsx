@@ -8,8 +8,8 @@ const InsertProduct = () => {
             <NavBarAdminPanel/>
             <h1 className="bg-white text-center pt-5 text-xl">Nuevo producto</h1>
             <form method='POST' action="http://localhost:5000/insertproduct">
-                    <div className='flex flex-col mt-10 justify-start items-start ml-56  '>
-                        <div className='flex space-x-5 w-full'>
+                    <div className='flex flex-col mt-10 justify-start items-start ml-72  '>
+                        <div className='flex space-x-20 w-full'>
                             <Input 
                                 title="Nombre"  
                                 name="Nombre" 
@@ -17,7 +17,7 @@ const InsertProduct = () => {
                                 paddingy="3" 
                                 width="full" 
                                 fontSize="text-base" 
-                                class=" w-1/3 "/>
+                                class=" w-2/5 "/>
                             <Input 
                                 title="Imagen" 
                                 name="Imagen" 
@@ -35,7 +35,7 @@ const InsertProduct = () => {
                             width="full" 
                             fontSize="text-base" 
                             class="w-full sm:w-3/4 mt-10"/>
-                        <div className='flex space-x-10 '>
+                        <div className='flex space-x-36 '>
                             <Input 
                                 title="Precio" 
                                 name="Precio" 
@@ -43,7 +43,7 @@ const InsertProduct = () => {
                                 paddingy="3" 
                                 width="full" 
                                 fontSize="text-base" 
-                                class="w-full sm:w-3/4 mt-10"/>
+                                class="w-full sm:w-full mt-10"/>
                             <Input 
                                 title="Precio con descuento" 
                                 name="PrecioDescuento" 
@@ -51,7 +51,7 @@ const InsertProduct = () => {
                                 paddingy="3" 
                                 width="full" 
                                 fontSize="text-base" 
-                                class="w-full sm:w-3/4 mt-10"/>
+                                class="w-full sm:w-full mt-10"/>
                             <Input 
                                 title="Stock" 
                                 name="Stock" 
@@ -59,7 +59,7 @@ const InsertProduct = () => {
                                 paddingy="3" 
                                 width="full" 
                                 fontSize="text-base" 
-                                class="w-full sm:w-3/4 mt-10"/>
+                                class="w-full sm:w-full mt-10"/>
                         </div>
                     </div>
                     <div className='mt-5 sm:flex-col'>
