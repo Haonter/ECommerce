@@ -14,7 +14,7 @@ import DeleteProduct from "../pages/DeleteProduct";
 const products = [
     {
         id: 1,
-        name: 'Diariela',
+        name: 'sabana',
         description: "XXXXXXXXXXXXXX",
         price: '$48',
         desc: '$47,2',
@@ -22,7 +22,7 @@ const products = [
     },
     {
         id: 2,
-        name: 'Earthen Bottle',
+        name: 'cama',
         description: "XXXXXXXXXXXXXX",
         price: '$48',
         desc: '$47,2',
@@ -30,7 +30,7 @@ const products = [
     },
     {
         id: 3,
-        name: 'Earthen Bottle',
+        name: 'Bottle',
         description: "XXXXXXXXXXXXXX",
         price: '$48',
         desc: '$47,2',
@@ -38,7 +38,7 @@ const products = [
     },
     {
         id: 4,
-        name: 'Earthen Bottle',
+        name: 'laptop',
         description: "XXXXXXXXXXXXXX",
         price: '$48',
         desc: '$47,2',
@@ -46,7 +46,7 @@ const products = [
     },
     {
         id: 5,
-        name: 'Earthen Bottle',
+        name: 'telefono',
         description: "XXXXXXXXXXXXXX",
         price: '$48',
         desc: '$47,2',
@@ -54,7 +54,7 @@ const products = [
     },
     {
         id: 6,
-        name: 'Earthen Bottle',
+        name: 'Calculadora',
         description: "XXXXXXXXXXXXXX",
         price: '$48',
         desc: '$47,2',
@@ -62,7 +62,7 @@ const products = [
     },
     {
         id: 7,
-        name: 'Earthen Bottle',
+        name: 'botella',
         description: "XXXXXXXXXXXXXX",
         price: '$48',
         desc: '$47,2',
@@ -70,7 +70,7 @@ const products = [
     },
     {
         id: 8,
-        name: 'Earthen Bottle',
+        name: 'mouse',
         description: "XXXXXXXXXXXXXX",
         price: '$48',
         desc: '$47,2',
@@ -186,7 +186,7 @@ function Exhibicion({children, flex, marginleft, hidden, cols, map, hiddenop, hr
                                             <div className={'flex justify-end items-end ' + hiddenop}>
                                                 <Opciones title="Editar" marginTop="16"   width="16" color="white" textColor='black' icono={Updateicon} url={"http://localhost:3000/updateproduct/" + product.id }/>
                                                 {/* agregar al boton de eliminar evento={DeleteProduct(product.id)} */}
-                                                <Opciones title="Eliminar" marginTop="16"   width="16" color="white" textColor='black' icono={Deleteicon} />
+                                                <Opciones title="Eliminar" marginTop="16"   width="16" color="white" textColor='black' icono={Deleteicon}  />
                                             </div>     
                                         </div>
                                         

@@ -33,14 +33,13 @@ const UpdateProduct = () => {
                         <div className='flex space-x-20'>
                             <Input 
                                 title="ID"  
-                                name="ID" 
+                                name="NID" 
                                 type="text" 
                                 paddingy="3" 
                                 width="full" 
                                 fontSize="text-base" 
                                 class=" w-full "
-                                //colocar el nombre correcto del campo
-                                value = {producto.id}/>
+                                value = {producto.NID}/>
                             <Input 
                                 title="Nombre"  
                                 name="Nombre" 
@@ -49,7 +48,6 @@ const UpdateProduct = () => {
                                 width="full" 
                                 fontSize="text-base" 
                                 class=" w-full "
-                                //colocar el nombre correcto del campo
                                 value = {producto.Nombre}/>
                             <Input 
                                 title="Imagen" 
@@ -59,8 +57,7 @@ const UpdateProduct = () => {
                                 width="full" 
                                 fontSize="text-base" 
                                 class="w-full" 
-                                //colocar el nombre correcto del campo
-                                value = {producto.imagen}/>
+                                value = {producto.Imagen}/>
                         </div>
                         <Input 
                             title="Descripcion" 
@@ -70,8 +67,7 @@ const UpdateProduct = () => {
                             width="full" 
                             fontSize="text-base" 
                             class="w-full sm:w-3/4 mt-10"
-                            //colocar el nombre correcto del campo
-                            value = {producto.descripcion}/>
+                            value = {producto.Descripcion}/>
                         <div className='flex space-x-36 '>
                             <Input 
                                 title="Precio" 
@@ -81,18 +77,16 @@ const UpdateProduct = () => {
                                 width="full" 
                                 fontSize="text-base" 
                                 class="w-full sm:w-full mt-10"
-                                //colocar el nombre correcto del campo
-                                value = {producto.precio}/>
+                                value = {producto.Precio}/>
                             <Input 
                                 title="Precio con descuento" 
-                                name="PrecioDescuento" 
+                                name="Descuento" 
                                 type="number" 
                                 paddingy="3" 
                                 width="full" 
                                 fontSize="text-base" 
                                 class="w-full sm:w-full mt-10"
-                                //colocar el nombre correcto del campo
-                                value = {producto.preciodescuento}/>
+                                value = {producto.Descuento}/>
                             <Input 
                                 title="Stock" 
                                 name="Stock" 
@@ -101,8 +95,7 @@ const UpdateProduct = () => {
                                 width="full" 
                                 fontSize="text-base" 
                                 class="w-full sm:w-full mt-10"
-                                //colocar el nombre correcto del campo
-                                value = {producto.stock}/>
+                                value = {producto.Stock}/>
                         </div>
                     </div>
                     <div className='mt-5 sm:flex-col'>

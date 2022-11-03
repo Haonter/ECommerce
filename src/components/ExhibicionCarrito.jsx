@@ -24,6 +24,11 @@ function ExhibicionCarrito({flex, marginleft, hidden, cols, href}) {
 
     }, []);
 
+    // useEffect(() => {
+        
+    //     localStorage.setItem('carrito', JSON.stringify(carrito))
+    // },[carrito])
+
 
     //------Funcion AgregarContador
     //funcion usada para el boton + del contador
@@ -35,8 +40,12 @@ function ExhibicionCarrito({flex, marginleft, hidden, cols, href}) {
 
         setCarrito((prevState) => prevState.map((productoEnCarrito, index) => {
             if (index === indiceCarrito) productoEnCarrito.cantidad = cantidad;
+
+        localStorage.clear()
+        localStorage.setItem('carrito', JSON.stringify(carrito))
         
-            return productoEnCarrito;
+        return productoEnCarrito;
+            
         }));
     };
 
@@ -57,10 +66,9 @@ function ExhibicionCarrito({flex, marginleft, hidden, cols, href}) {
 
     function EliminarDelCarrito(producto){
         const indiceCarrito = carrito.findIndex(c => c.id === producto.id);
-        setCarrito(() => carrito.map((elemento, i) =>(i===indiceCarrito) ? 
-        carrito.pop(indiceCarrito):elemento));
-        console.log(carrito)
-        return (carrito)
+        const nuevoCarrito = [...carrito]
+        nuevoCarrito.splice(indiceCarrito,1)
+        setCarrito(nuevoCarrito)
         
     };
 

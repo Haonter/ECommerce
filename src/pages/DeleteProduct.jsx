@@ -8,7 +8,7 @@
 
 //     useEffect(
 //         ()=> {
-//             //se debe cambiar el endpoint por el endpoint de getproduct por id de diego y actualizarla en exhibicion componenete opciones, eliminar
+//             //se debe cambiar el endpoint por el endpoint de deleteproduct de diego y actualizarla en exhibicion componente opciones, eliminar
 //             fetch("http://localhost:3001/deleteproduct/"+id, options)
 //                 .then((res)=> res.json())
 //                 .catch((err)=> console.log(err));
