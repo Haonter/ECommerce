@@ -11,7 +11,7 @@ import DeleteProduct from "../pages/DeleteProduct";
 
 
 
-const products = [
+/*const products = [
     {
         NID: 1,
         Nombre: 'sabana',
@@ -85,29 +85,45 @@ const products = [
         Stock: 23
     },
     // More products...
-]
+]*/
+
+
 
 
 function Exhibicion({children, flex, marginleft, hidden, cols, map, hiddenop, href}) {
+    const [products, setProducto] = useState([])
     const [carrito, setCarrito] = useState([])
     const [productoCantidad , setproductoCantidad] = useState([])
+    const options = {
+        method: 'GET',
+    };
 
+    
     //useEffect que revisa si el localstorage tiene informacion del carrito, si existe, la registra en la variable carrito para mantener la 
     //informacion ya indicada en el carrito, a su vez se evalua cada producto en products, si el id de algun producto en products coincide con el id
     //de algun producto en el carrito, el array de la const productoCantidad se actualizara con el valor de cantidad que tenga en producto en el carrito, 
     //sino el valor se actualizara con cero, asi los inputs de los contadores siempre mostraran la cantidad correspondiente a cada producto
     useEffect(() => {
+
         const carrito = JSON.parse(localStorage.getItem('carrito'));        
-        if (carrito) {
-            setCarrito(carrito);
-        }    
-        
+                    if (carrito) {
+                        setCarrito(carrito);
+                    }                 
+        fetch("http://localhost:5000/productos", options)
+                .then((res)=> res.json())
+                .then((res)=> setProducto(res))
+                .catch((err)=> console.log(err));
+    }, [])
+
+    useEffect(() => {
+
         setproductoCantidad(() => products.map((producto) => {
             const productoEnCarrito = carrito.find(c => c.NID === producto.NID);
 
             return (productoEnCarrito != null) ? productoEnCarrito.cantidad : 0;
-        }));
-    }, [])
+        }));     
+
+    }, [products])
 
     useEffect(() => {        
         localStorage.setItem('carrito', JSON.stringify(carrito));

@@ -33,22 +33,22 @@ function ExhibicionCarrito({flex, marginleft, hidden, cols, href}) {
 
     //------Funcion AgregarContador
     //funcion usada para el boton + del contador
-    function AgregarContador(index, producto, cantidad){
+    function AgregarContador(index, producto, cantidad) {
         const indiceCarrito = carrito.findIndex(c => c.NID === producto.NID);
 
         setproductoCantidad(() => productoCantidad.map((elemento, i) =>(i===index) ? 
         elemento + 1 : elemento));
 
         setCarrito((prevState) => prevState.map((productoEnCarrito, index) => {
-            if (index === indiceCarrito) productoEnCarrito.cantidad = cantidad;
-
-        localStorage.clear()
-        localStorage.setItem('carrito', JSON.stringify(carrito))
-        
-        return productoEnCarrito;
-            
+            if (index === indiceCarrito) productoEnCarrito.cantidad = cantidad;               
+            return productoEnCarrito;
         }));
+                     
+
+        
     };
+
+
 
     //------Funcion RestarContador
     //funcion usada para el boton - del contador
@@ -61,8 +61,10 @@ function ExhibicionCarrito({flex, marginleft, hidden, cols, href}) {
         setCarrito((prevState) => prevState.map((productoEnCarrito, index) => {
             if (index === indiceCarrito) productoEnCarrito.cantidad = cantidad;
         
+            // localStorage.clear()
+            // localStorage.setItem('carrito', JSON.stringify(carrito))
             return productoEnCarrito;
-        }));
+        }));            
     };
 
     function EliminarDelCarrito(producto){
@@ -74,14 +76,31 @@ function ExhibicionCarrito({flex, marginleft, hidden, cols, href}) {
     };
 
     function comprarCarrito(){
-        const productosCantidades = carrito.map((elemento) => {
+        const productosCantidades = carrito.map((elemento, index) => {
             return {
                 NID: elemento.NID,
-                cantidad: elemento.cantidad
+                cantidad: productoCantidad[index]
             }
         })
         console.log(productosCantidades)
+        comprarProductos(productosCantidades);
         
+    }
+
+    function comprarProductos(productos) {
+        const requestOptions = {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(productos)
+        };
+        fetch('http://localhost:5000/updateproduct', requestOptions)
+            .then(response => 
+                {
+                    if (response.ok) {
+                        localStorage.clear();
+                        setCarrito([]);
+                    }
+                });
     }
 
     
