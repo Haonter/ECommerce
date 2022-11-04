@@ -11,7 +11,8 @@ function Input(props) {
                     ref={props.ref}
                     value={props.value}
                     className={"m-1 py-" + props.paddingy + " pl-1 " + props.fontSize + " block w-" + props.width + " rounded-md shadow shadow-gray-400 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm placeholder:pl-2 "+ props.text } 
-                    placeholder={props.placeholder}/>
+                    placeholder={props.placeholder}
+                    onChange= {props.onChange}/>
             </div>
         </>
     )

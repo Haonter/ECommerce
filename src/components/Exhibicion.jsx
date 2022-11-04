@@ -13,68 +13,76 @@ import DeleteProduct from "../pages/DeleteProduct";
 
 const products = [
     {
-        id: 1,
-        name: 'sabana',
-        description: "XXXXXXXXXXXXXX",
-        price: '$48',
-        desc: '$47,2',
-        imagen: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+        NID: 1,
+        Nombre: 'sabana',
+        Descripcion: "XXXXXXXXXXXXXX",
+        Precio: '$48',
+        Descuento: '$47,2',
+        Imagen: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+        Stock: 12
     },
     {
-        id: 2,
-        name: 'cama',
-        description: "XXXXXXXXXXXXXX",
-        price: '$48',
-        desc: '$47,2',
-        imagen: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+        NID: 2,
+        Nombre: 'cama',
+        Descripcion: "XXXXXXXXXXXXXX",
+        Precio: '$48',
+        Descuento: '$47,2',
+        Imagen: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+        Stock: 33
     },
     {
-        id: 3,
-        name: 'Bottle',
-        description: "XXXXXXXXXXXXXX",
-        price: '$48',
-        desc: '$47,2',
-        imagen: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+        NID: 3,
+        Nombre: 'Bottle',
+        Descripcion: "XXXXXXXXXXXXXX",
+        Precio: '$48',
+        Descuento: '$47,2',
+        Imagen: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+        Stock: 56
     },
     {
-        id: 4,
-        name: 'laptop',
-        description: "XXXXXXXXXXXXXX",
-        price: '$48',
-        desc: '$47,2',
-        imagen: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+        NID: 4,
+        Nombre: 'laptop',
+        Descripcion: "XXXXXXXXXXXXXX",
+        Precio: '$48',
+        Descuento: '$47,2',
+        Imagen: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+        Stock: 74
     },
     {
-        id: 5,
-        name: 'telefono',
-        description: "XXXXXXXXXXXXXX",
-        price: '$48',
-        desc: '$47,2',
-        imagen: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+        NID: 5,
+        Nombre: 'telefono',
+        Descripcion: "XXXXXXXXXXXXXX",
+        Precio: '$48',
+        Descuento: '$47,2',
+        Imagen: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+        Stock: 34
     },
     {
-        id: 6,
-        name: 'Calculadora',
-        description: "XXXXXXXXXXXXXX",
-        price: '$48',
-        desc: '$47,2',
-        imagen: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+        NID: 6,
+        Nombre: 'Calculadora',
+        Descripcion: "XXXXXXXXXXXXXX",
+        Precio: '$48',
+        Descuento: '$47,2',
+        Imagen: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+        Stock: 56
     },
     {
-        id: 7,
-        name: 'botella',
-        description: "XXXXXXXXXXXXXX",
-        price: '$48',
-        desc: '$47,2',
-        imagen: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+        NID: 7,
+        Nombre: 'botella',
+        Descripcion: "XXXXXXXXXXXXXX",
+        Precio: '$48',
+        Descuento: '$47,2',
+        Imagen: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+        Stock: 67
     },
     {
-        id: 8,
-        name: 'mouse',
-        description: "XXXXXXXXXXXXXX",
-        price: '$48',
-        desc: '$47,2',
-        imagen: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+        NID: 8,
+        Nombre: 'mouse',
+        Descripcion: "XXXXXXXXXXXXXX",
+        Precio: '$48',
+        Descuento: '$47,2',
+        Imagen: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+        Stock: 23
     },
     // More products...
 ]
@@ -95,7 +103,7 @@ function Exhibicion({children, flex, marginleft, hidden, cols, map, hiddenop, hr
         }    
         
         setproductoCantidad(() => products.map((producto) => {
-            const productoEnCarrito = carrito.find(c => c.id === producto.id);
+            const productoEnCarrito = carrito.find(c => c.NID === producto.NID);
 
             return (productoEnCarrito != null) ? productoEnCarrito.cantidad : 0;
         }));
@@ -122,7 +130,7 @@ function Exhibicion({children, flex, marginleft, hidden, cols, map, hiddenop, hr
     function AgregarCarrito(producto, cantidad) {
         //el parametro producto recibe el objeto del producto COMPLETO con toda su informacion
         //el findIndex si es false regresa -1, es decir, si el producto no esta en el carrito
-        const indiceCarrito = carrito.findIndex(c => c.id === producto.id);
+        const indiceCarrito = carrito.findIndex(c => c.NID === producto.NID);
 
         //si el producto no esta en el carrito se agrega
         if (indiceCarrito < 0) {
@@ -166,17 +174,17 @@ function Exhibicion({children, flex, marginleft, hidden, cols, map, hiddenop, hr
                     
                             {products.map((product, index) => (
                                 <>
-                                    <a id={product.id} key={product.id} className={"group " + flex + " shadow-sm shadow-blue-900 px-4 py-4 rounded-xl"}>
+                                    <a id={product.NID} key={product.NID} className={"group " + flex + " shadow-sm shadow-blue-900 px-4 py-4 rounded-xl"}>
                                         <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200  xl:aspect-w-7 xl:aspect-h-8">
                                             <img
-                                                src={product.imagen}
+                                                src={product.Imagen}
                                                 alt="Not found"
                                                 className="h-full w-full object-cover object-center group-hover:opacity-75"
                                             />
                                         </div>
                                         <div className={"flex-col " + marginleft + " w-full"}>
-                                            <a className="mt-4 text-lg	 text-gray-700" href={href}>{product.name}</a>
-                                            <p className="mt-1 text-lg font-medium text-gray-900">{product.price}</p>
+                                            <a className="mt-4 text-lg	 text-gray-700" href={href}>{product.Nombre}</a>
+                                            <p className="mt-1 text-lg font-medium text-gray-900">{product.Precio}</p>
                                             {/* CONTADOR */}
                                             <div className={"flex " + hidden}>
                                                 <Boton  evento={() => {RestarContador(index)}} title="-" marginy="2" justify="start" width="0.5" color="white" textColor='black' hidden="hidden"/>
@@ -184,8 +192,8 @@ function Exhibicion({children, flex, marginleft, hidden, cols, map, hiddenop, hr
                                                 <Boton evento={() => {AgregarContador(index)}} title="+" marginy="2" justify="start" width="0.5" color="white" textColor='black' hidden="hidden"/>
                                             </div>
                                             <div className={'flex justify-end items-end ' + hiddenop}>
-                                                <Opciones title="Editar" marginTop="16"   width="16" color="white" textColor='black' icono={Updateicon} url={"http://localhost:3000/updateproduct/" + product.id }/>
-                                                {/* agregar al boton de eliminar evento={DeleteProduct(product.id)} */}
+                                                <Opciones title="Editar" marginTop="16"   width="16" color="white" textColor='black' icono={Updateicon} url={"http://localhost:3000/updateproduct/" + product.NID }/>
+                                                {/* agregar al boton de eliminar evento={DeleteProduct(product.NID)} */}
                                                 <Opciones title="Eliminar" marginTop="16"   width="16" color="white" textColor='black' icono={Deleteicon}  />
                                             </div>     
                                         </div>
@@ -193,7 +201,7 @@ function Exhibicion({children, flex, marginleft, hidden, cols, map, hiddenop, hr
                                         <div className="mt-3 flex">
                                             <div className={hidden}>
                                                 <Boton
-                                                key= {product.id} 
+                                                key= {product.NID} 
                                                 evento={ 
                                                         () =>
                                                             {   

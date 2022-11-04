@@ -12,7 +12,7 @@ const InsertProduct = () => {
                         <div className='flex space-x-20'>
                         <Input 
                                 title="ID"  
-                                name="ID" 
+                                name="NID" 
                                 type="text" 
                                 paddingy="3" 
                                 width="full" 

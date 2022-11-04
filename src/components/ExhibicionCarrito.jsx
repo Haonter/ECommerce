@@ -9,6 +9,7 @@ import Input from "./input";
 function ExhibicionCarrito({flex, marginleft, hidden, cols, href}) {
     const [carrito, setCarrito] = useState([])
     const [productoCantidad , setproductoCantidad] = useState([])
+    
 
     useEffect(() => {
         const carrito = JSON.parse(localStorage.getItem('carrito'));
@@ -17,7 +18,7 @@ function ExhibicionCarrito({flex, marginleft, hidden, cols, href}) {
         }
 
         setproductoCantidad(() => carrito.map((producto) => {
-            const productoEnCarrito = carrito.find(c => c.id === producto.id);
+            const productoEnCarrito = carrito.find(c => c.NID === producto.NID);
 
             return (productoEnCarrito != null) ? productoEnCarrito.cantidad : 0;
         }));
@@ -33,7 +34,7 @@ function ExhibicionCarrito({flex, marginleft, hidden, cols, href}) {
     //------Funcion AgregarContador
     //funcion usada para el boton + del contador
     function AgregarContador(index, producto, cantidad){
-        const indiceCarrito = carrito.findIndex(c => c.id === producto.id);
+        const indiceCarrito = carrito.findIndex(c => c.NID === producto.NID);
 
         setproductoCantidad(() => productoCantidad.map((elemento, i) =>(i===index) ? 
         elemento + 1 : elemento));
@@ -52,7 +53,7 @@ function ExhibicionCarrito({flex, marginleft, hidden, cols, href}) {
     //------Funcion RestarContador
     //funcion usada para el boton - del contador
     function RestarContador(index, producto, cantidad){
-        const indiceCarrito = carrito.findIndex(c => c.id === producto.id);
+        const indiceCarrito = carrito.findIndex(c => c.NID === producto.NID);
 
         setproductoCantidad(() => productoCantidad.map((elemento, i) => (i===index && elemento - 1 >= 0) ? 
         elemento - 1 : elemento));
@@ -65,14 +66,25 @@ function ExhibicionCarrito({flex, marginleft, hidden, cols, href}) {
     };
 
     function EliminarDelCarrito(producto){
-        const indiceCarrito = carrito.findIndex(c => c.id === producto.id);
+        const indiceCarrito = carrito.findIndex(c => c.NID === producto.NID);
         const nuevoCarrito = [...carrito]
         nuevoCarrito.splice(indiceCarrito,1)
         setCarrito(nuevoCarrito)
         
     };
 
+    function comprarCarrito(){
+        const productosCantidades = carrito.map((elemento) => {
+            return {
+                NID: elemento.NID,
+                cantidad: elemento.cantidad
+            }
+        })
+        console.log(productosCantidades)
+        
+    }
 
+    
 
     if (carrito) {
     return (
@@ -86,17 +98,17 @@ function ExhibicionCarrito({flex, marginleft, hidden, cols, href}) {
                                 {carrito
                                     .map((product, index) => (
                                             <>
-                                                <a id={product.id} key={product.id} className={"group " + flex + " shadow-sm shadow-blue-900 px-4 py-4 rounded-xl"}>
+                                                <a id={product.NID} key={product.NID} className={"group " + flex + " shadow-sm shadow-blue-900 px-4 py-4 rounded-xl"}>
                                                     <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200  xl:aspect-w-7 xl:aspect-h-8">
                                                         <img
-                                                            src={product.imagen}
+                                                            src={product.Imagen}
                                                             alt="Not found"
                                                             className="h-full w-full object-cover object-center group-hover:opacity-75"
                                                         />
                                                     </div>
                                                     <div className={"flex-col " + marginleft + " w-full"}>
-                                                        <a className="mt-4 text-lg	 text-gray-700" href={href}>{product.name}</a>
-                                                        <p className="mt-1 text-lg font-medium text-gray-900">{product.price}</p>
+                                                        <a className="mt-4 text-lg	 text-gray-700" href={href}>{product.Nombre}</a>
+                                                        <p className="mt-1 text-lg font-medium text-gray-900">{product.Precio}</p>
                                                         {/* CONTADOR */}
                                                         <div className="flex">
                                                             <Boton  evento={() => {RestarContador(index, product, productoCantidad[index])}} title="-" marginy="2" justify="start" width="0.5" color="white" textColor='black' hidden="hidden"/>
@@ -114,7 +126,9 @@ function ExhibicionCarrito({flex, marginleft, hidden, cols, href}) {
                                 } 
                     </div>
                     <div className="rounded-full flex justify-center mt-16 pb-10">
-                            <button onClick="" type='submit'
+                            <button 
+                                onClick={comprarCarrito} 
+                                type='submit'
                                 className="flex w-32 justify-center rounded-full bg-green-400 py-1 px-5 text-sm font-medium text-white hover:bg-gray-400 md:py-1 md:px-4 md:text-sm">
                                     Comprar
                             </button>
