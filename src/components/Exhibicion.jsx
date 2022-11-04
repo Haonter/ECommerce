@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Boton from "./Boton";
-import Pagination from "./Pagination";
+//import Pagination from "./Pagination";
 import Input from "./input";
 import Opciones from './Opciones'
 import Deleteicon from '../media/deleteicon.png'; 
@@ -199,8 +199,11 @@ function Exhibicion({children, flex, marginleft, hidden, cols, map, hiddenop, hr
                                             />
                                         </div>
                                         <div className={"flex-col " + marginleft + " w-full"}>
-                                            <a className="mt-4 text-lg	 text-gray-700" href={href}>{product.Nombre}</a>
-                                            <p className="mt-1 text-lg font-medium text-gray-900">{product.Precio}</p>
+                                            <a className="mt-4 text-lg font-medium text-gray-700" href={href}>{product.Nombre}</a>
+                                            <p className="mt-1 text-md  font-medium text-gray-900">Descripcion:</p><span> {product.Descripcion}</span>
+                                            <p className="mt-1 text-md  font-medium text-gray-900">Precio: <span className="font-normal">{product.Precio}$</span></p> 
+                                            <p className="mt-1 text-md  font-medium text-gray-900">En descuento: <span className="font-normal">{product.Descuento}$</span></p>
+                                            <p className="mt-1 text-md  font-medium text-gray-900">Disponible: <span className="font-normal">{product.Stock} Und</span></p>
                                             {/* CONTADOR */}
                                             <div className={"flex " + hidden}>
                                                 <Boton  evento={() => {RestarContador(index)}} title="-" marginy="2" justify="start" width="0.5" color="white" textColor='black' hidden="hidden"/>
@@ -242,7 +245,7 @@ function Exhibicion({children, flex, marginleft, hidden, cols, map, hiddenop, hr
             </section>
             </div>
         </div>
-        <Pagination/>
+        {/*<Pagination/>*/}
         </>
     )
 }

@@ -27,9 +27,9 @@ const InsertProduct = () => {
                                 fontSize="text-base" 
                                 class=" w-full "/>
                             <Input 
-                                title="Imagen" 
+                                title="Imagen (URL)" 
                                 name="Imagen" 
-                                type="file" 
+                                type="url" 
                                 paddingy="3" 
                                 width="full" 
                                 fontSize="text-base" 
@@ -54,7 +54,7 @@ const InsertProduct = () => {
                                 class="w-full sm:w-full mt-10"/>
                             <Input 
                                 title="Precio con descuento" 
-                                name="PrecioDescuento" 
+                                name="Descuento" 
                                 type="number" 
                                 paddingy="3" 
                                 width="full" 

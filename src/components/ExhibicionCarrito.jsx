@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Boton from "./Boton";
-import Pagination from "./Pagination";
+//import Pagination from "./Pagination";
 import Opciones from "./Opciones";
 import Deleteicon from '../media/deleteicon.png'; 
 import Input from "./input";
@@ -43,7 +43,6 @@ function ExhibicionCarrito({flex, marginleft, hidden, cols, href}) {
             if (index === indiceCarrito) productoEnCarrito.cantidad = cantidad;               
             return productoEnCarrito;
         }));
-                     
 
         
     };
@@ -155,7 +154,7 @@ function ExhibicionCarrito({flex, marginleft, hidden, cols, href}) {
                 </section>
             </div>
         </div>
-        <Pagination/>
+        {/*<Pagination/>*/}
         </>
     )} else {
         return(
