@@ -14,11 +14,11 @@ const UpdateProduct = () => {
     useEffect(
         ()=> {
             //se debe cambiar el endpoint por el endpoint de getproduct por id de diego y actualizarla en exhibicion componenete opciones, editar
-            fetch("http://localhost:3001/getProduct/"+id, options)
+            fetch("http://localhost:5000/producto=:"+id, options)
                 .then((res)=> res.json())
                 .then((res)=> setProducto(res))
                 .catch((err)=> console.log(err));
-        },[])
+        },[id])
 
         if (producto){
             console.log(producto);
@@ -28,7 +28,7 @@ const UpdateProduct = () => {
         <>
             <h1 className="bg-white text-center pt-5 text-xl">Nuevo producto</h1>
             {/*colocar la ruta de path de diego */}
-            <form method='PATH' action={"http://localhost:5000/updateProduct/"+id}>
+            <form method='PATH' action={"http://localhost:5000/updateproduct/"+id}>
                     <div className='flex flex-col mt-10 justify-start items-start ml-72  '>
                         <div className='flex space-x-20'>
                             <Input 
