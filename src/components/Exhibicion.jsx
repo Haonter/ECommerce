@@ -5,90 +5,9 @@ import Input from "./input";
 import Opciones from './Opciones'
 import Deleteicon from '../media/deleteicon.png'; 
 import Updateicon from '../media/updateicon.png'; 
-import DeleteProduct from "../pages/DeleteProduct";
+//import DeleteProduct from "../pages/DeleteProduct";
 
 //al darle a comprar debe limpiarse el localstorage
-
-
-
-/*const products = [
-    {
-        NID: 1,
-        Nombre: 'sabana',
-        Descripcion: "XXXXXXXXXXXXXX",
-        Precio: '$48',
-        Descuento: '$47,2',
-        Imagen: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
-        Stock: 12
-    },
-    {
-        NID: 2,
-        Nombre: 'cama',
-        Descripcion: "XXXXXXXXXXXXXX",
-        Precio: '$48',
-        Descuento: '$47,2',
-        Imagen: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
-        Stock: 33
-    },
-    {
-        NID: 3,
-        Nombre: 'Bottle',
-        Descripcion: "XXXXXXXXXXXXXX",
-        Precio: '$48',
-        Descuento: '$47,2',
-        Imagen: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
-        Stock: 56
-    },
-    {
-        NID: 4,
-        Nombre: 'laptop',
-        Descripcion: "XXXXXXXXXXXXXX",
-        Precio: '$48',
-        Descuento: '$47,2',
-        Imagen: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
-        Stock: 74
-    },
-    {
-        NID: 5,
-        Nombre: 'telefono',
-        Descripcion: "XXXXXXXXXXXXXX",
-        Precio: '$48',
-        Descuento: '$47,2',
-        Imagen: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
-        Stock: 34
-    },
-    {
-        NID: 6,
-        Nombre: 'Calculadora',
-        Descripcion: "XXXXXXXXXXXXXX",
-        Precio: '$48',
-        Descuento: '$47,2',
-        Imagen: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
-        Stock: 56
-    },
-    {
-        NID: 7,
-        Nombre: 'botella',
-        Descripcion: "XXXXXXXXXXXXXX",
-        Precio: '$48',
-        Descuento: '$47,2',
-        Imagen: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
-        Stock: 67
-    },
-    {
-        NID: 8,
-        Nombre: 'mouse',
-        Descripcion: "XXXXXXXXXXXXXX",
-        Precio: '$48',
-        Descuento: '$47,2',
-        Imagen: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
-        Stock: 23
-    },
-    // More products...
-]*/
-
-
-
 
 function Exhibicion({children, flex, marginleft, hidden, cols, map, hiddenop, href}) {
     const [products, setProducto] = useState([])
@@ -167,23 +86,13 @@ function Exhibicion({children, flex, marginleft, hidden, cols, map, hiddenop, hr
                 return productoEnCarrito;
             }));
         }
-
-        // setCarrito(() => carrito.map((elemento, i) =>(i==index) ? 
-        // {id:elemento.id , 
-        // name: elemento.name, 
-        // description: elemento.description , 
-        // price:elemento.price, 
-        // desc:elemento.desc, 
-        // imagen: elemento.imagen, 
-        // cantidad:cantidad} : elemento))
-        // console.log(carrito)
     };
 
     return (
         <>
-        <div className="bg-white ">
+        <div className="bg-slate-900/25 ">
             <div className="mx-auto max-w-2xl py-16 px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">
-                <h2 className="sr-only">Products</h2>
+                <h2 className="sr-only">Productos</h2>
             <section className = " ">
                 <div className={" grid grid-cols-1 gap-y-10 gap-x-6 " + cols }>
                     <h2 className="sr-only">Obtener productos con metodo GET y eliminar array de ejemplo</h2>
@@ -199,7 +108,7 @@ function Exhibicion({children, flex, marginleft, hidden, cols, map, hiddenop, hr
                                             />
                                         </div>
                                         <div className={"flex-col " + marginleft + " w-full"}>
-                                            <a className="mt-4 text-lg font-medium text-gray-700" href={href}>{product.Nombre}</a>
+                                            <a className="mt-4 text-lg font-medium text-gray-900" href={href}>{product.Nombre}</a>
                                             <p className="mt-1 text-md  font-medium text-gray-900">Descripcion:</p><span> {product.Descripcion}</span>
                                             <p className="mt-1 text-md  font-medium text-gray-900">Precio: <span className="font-normal">{product.Precio}$</span></p> 
                                             <p className="mt-1 text-md  font-medium text-gray-900">En descuento: <span className="font-normal">{product.Descuento}$</span></p>
@@ -213,27 +122,28 @@ function Exhibicion({children, flex, marginleft, hidden, cols, map, hiddenop, hr
                                             <div className={'flex justify-end items-end ' + hiddenop}>
                                                 <Opciones title="Editar" marginTop="16"   width="16" color="white" textColor='black' icono={Updateicon} url={"http://localhost:3000/updateproduct/" + product.NID }/>
                                                 {/* agregar al boton de eliminar evento={DeleteProduct(product.NID)} */}
-                                                <Opciones title="Eliminar" marginTop="16"   width="16" color="white" textColor='black' icono={Deleteicon}  />
+                                                <Opciones title="Eliminar" marginTop="16"   width="16" color="white" textColor='black' icono={Deleteicon} url={"http://localhost:5000/delete=" + product.NID }  />
                                             </div>     
                                         </div>
                                         
                                         <div className="mt-3 flex">
                                             <div className={hidden}>
                                                 <Boton
-                                                key= {product.NID} 
-                                                evento={ 
-                                                        () =>
-                                                            {   
-                                                                // const indexProduct = index
-                                                                // const cantidad= productoCantidad                        
-                                                                return(
-                                                                    <>
-                                                                        {AgregarCarrito(product, productoCantidad[index])}
-                                                                    </>
-                                                                )
-                                                            }
-                                                        } 
-                                                disabled={productoCantidad[index] < 1 } title="Agregar al carrito" marginy="1" justify="end"  width="full" color="green" textColor='white' hidden="hidden" />
+                                                    key= {product.NID} 
+                                                    evento={ 
+                                                            () =>
+                                                                {   
+                                                                    // const indexProduct = index
+                                                                    // const cantidad= productoCantidad                        
+                                                                    return(
+                                                                        <>
+                                                                            {AgregarCarrito(product, productoCantidad[index])}
+                                                                        </>
+                                                                    )
+                                                                }
+                                                            } 
+                                                    disabled={productoCantidad[index] < 1 } title="Agregar al carrito" marginy="1" justify="end"  width="full" color="green" textColor='white' hidden="hidden" 
+                                                />
                                             </div>
                                         </div>
                                     </a>
@@ -249,7 +159,5 @@ function Exhibicion({children, flex, marginleft, hidden, cols, map, hiddenop, hr
         </>
     )
 }
-
-
 
 export default Exhibicion;

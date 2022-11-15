@@ -107,7 +107,7 @@ function ExhibicionCarrito({flex, marginleft, hidden, cols, href}) {
     if (carrito) {
     return (
         <>
-        <div className="bg-white w-screen">
+        <div className="bg-slate-900/25 w-[100vmax]">
             <div className="mx-auto max-w-2xl py-16 px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">
                 <h2 className="sr-only">Products</h2>
                 <section className = " ">

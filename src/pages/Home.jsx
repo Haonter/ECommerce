@@ -1,5 +1,16 @@
-import React from 'react'
+import React from 'react';
 import NavBarGuest from '../components/NavBar/NavBarGuest';
+import Animation from '../components/Animation';
+import Elementos from '../components/Elementos';
+
+/* style={{ 
+                backgroundVideo: `url(${Animation})`, 
+                width:'100vw', 
+                height:'50.5vw', 
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: '100vmax' 
+                }} 
+*/
 
 const Home = () => {
     return ( 
@@ -7,9 +18,11 @@ const Home = () => {
             <head>
                 <title>Home</title>
             </head>
-            <body>
+            <div className=''>
                 <NavBarGuest/>
-            </body>
+                <Elementos/>
+                <Animation/>
+            </div>
         </>
     );
 }

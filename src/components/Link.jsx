@@ -12,7 +12,7 @@ function Link(props) {
             </div>
         </div>*/
         <a
-        className={" flex shadow shadow-gray-400 sm:my-" + props.marginy + " w-" + props.width + "  justify-center items-center rounded-full border border-transparent bg-" + props.color + "-400 py-1 px-5 text-sm font-medium text-" + props.textColor + " justify-center items-center md:py-1 md:px-4 md:text-sm disabled:bg-gray-400 " + props.hover}
+        className={" flex shadow shadow-gray-400 mb-" + props.mb + "sm:my-" + props.marginy + " w-" + props.width + "  justify-center items-center rounded-full border border-transparent bg-" + props.color + "-400 py-1 px-5 text-sm font-medium text-" + props.textColor + " justify-center items-center md:py-1 md:px-4 md:text-sm disabled:bg-gray-400 " + props.hover}
         onClick={() => props.evento()}
         href={props.href}
         disabled = {props.disabled}
