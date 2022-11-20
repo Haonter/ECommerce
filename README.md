@@ -1,6 +1,5 @@
 # ECommerce
-E-commerce in M.E.R.N. Stack
-Tienda Electrónica en Stack M.E.R.N. 
+E-commerce in M.E.R.N. Stack / Tienda Electrónica en Stack M.E.R.N. 
 
 IMPORTANT:
 This project was carried out in collaboration with Diariela Hernández.
@@ -14,6 +13,6 @@ Este proyecto fue realizado en colaboración con Diariela Hernández.
 - 😎 My vision is to learn more every day about the world of web development both in the front-end and in the back-end.
 
 
-- 😄 If you like this project, I would appreciate to much if you give a star to this repository.
+-😄 If you like this project, I would appreciate to much if you give a star to this repository.
 
-- 😄 Si te gustó éste proyecto, agradecería mucho si le dieras una estrella a este repositorio.
+-😄 Si te gustó éste proyecto, agradecería mucho si le das una estrella a este repositorio.
