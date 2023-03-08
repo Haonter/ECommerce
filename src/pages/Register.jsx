@@ -28,7 +28,7 @@ const Register = () => {
                             name="Nombre"
                             type="text" 
                             paddingy="3" 
-                            width="full" 
+                            width="30px" 
                             fontSize="text-base" 
                             class="w-full sm:w-3/4 ml-9"
                         />

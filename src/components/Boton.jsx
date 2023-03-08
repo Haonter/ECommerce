@@ -18,7 +18,8 @@ function Boton(props) {
         disabled = {props.disabled}
         >
             <img src={props.img} alt="" 
-            className={"flex w-" + props.widthimg + " items-center justify-center rounded-md border border-transparent bg-" + props.colorimg + "-400 py-1  text-sm font-medium text-" + props.textColorimg + " hover:bg-gray-200 md:py-1 md:px-4 md:text-sm " + props.hidden} />
+            className={"flex w-" + props.widthimg + " items-center justify-center rounded-md border border-transparent bg-" + props.colorimg + "-400 py-1  text-sm font-medium text-" + props.textColorimg + " hover:bg-gray-200 md:py-1 md:px-4 md:text-sm " + props.hidden} 
+            />
             {props.title}
         </button>
 

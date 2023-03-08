@@ -23,28 +23,27 @@ import DeleteProduct from './pages/DeleteProduct';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-  <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/Home" element={<UserHome  />} />
-      <Route path="/adminhome" element={<AdminHome />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/panel" element={<AdminPanel />} />
-      <Route path="/insertproduct" element={<InsertProduct />} />
-      <Route path="/updateproduct/:id" element={<UpdateProduct />} />
-      <Route path="/deleteproduct/:id" element={<DeleteProduct />} />
-      <Route path="/about-product" element={<AboutProduct />} />
-      <Route path="/about-product-admin" element={<AboutProductAdmin />} />
-      <Route path="/carrito" element={<Carrito />} />
-      <Route path="/carrito-admin" element={<CarritoAdmin/>} />
-      <Route path="/verify" element={<Verify />} />
-      <Route path="/recovery" element={<Recovery />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/about-admin" element={<AboutAdmin />} />
-      <Route path="/about-us" element={<AboutUser />} />
-      
-  </Routes>
-</BrowserRouter>
+    <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Home" element={<UserHome  />} />
+        <Route path="/adminhome" element={<AdminHome />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/panel" element={<AdminPanel />} />
+        <Route path="/insertproduct" element={<InsertProduct />} />
+        <Route path="/updateproduct/:id" element={<UpdateProduct />} />
+        <Route path="/deleteproduct/:id" element={<DeleteProduct />} />
+        <Route path="/about-product" element={<AboutProduct />} />
+        <Route path="/about-product-admin" element={<AboutProductAdmin />} />
+        <Route path="/carrito" element={<Carrito />} />
+        <Route path="/carrito-admin" element={<CarritoAdmin/>} />
+        <Route path="/verify" element={<Verify />} />
+        <Route path="/recovery" element={<Recovery />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/about-admin" element={<AboutAdmin />} />
+        <Route path="/about-us" element={<AboutUser />} />
+    </Routes>
+  </BrowserRouter>
 );
 
 
